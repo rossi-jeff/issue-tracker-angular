@@ -1,0 +1,27 @@
+<div id="pagination-controls" class="flex flex-wrap justify-between">
+  <button (click)="firstPage()">First</button>
+  <button (click)="previousPage()">Previous</button>
+  <div>
+    <label for="per-pag">Per Page</label>
+    <select name="per-page" (change)="limitSelectChanged($event)">
+      <option
+        *ngFor="let p of perPageOptions"
+        [value]="p"
+        [selected]="p == perPage"
+      >
+        {{ p }}
+      </option>
+    </select>
+  </div>
+  <div>{{ first }} to {{ last }} of {{ count }}</div>
+  <div>
+    <label for="page">Page</label>
+    <select name="page" (change)="pageSelectChanged($event)">
+      <option *ngFor="let p of pages" [value]="p" [selected]="p == current">
+        {{ p }}
+      </option>
+    </select>
+  </div>
+  <button (click)="nextPage()">Next</button>
+  <button (click)="lastPage()">Last</button>
+</div>
