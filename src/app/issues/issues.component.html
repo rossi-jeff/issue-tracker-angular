@@ -1,5 +1,10 @@
 <h1>Issues</h1>
 
+<app-issue-filter
+  [users]="users"
+  (filterIssues)="filterIssues($event)"
+></app-issue-filter>
+
 <app-issue-card
   *ngFor="let issue of paginated"
   [issue]="issue"

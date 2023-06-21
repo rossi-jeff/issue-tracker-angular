@@ -15,9 +15,10 @@ import { PaginationControlsComponent } from './pagination-controls/pagination-co
 import { IssueCardComponent } from './issue-card/issue-card.component';
 import { UserCardComponent } from './user-card/user-card.component';
 import { TimeClockCardComponent } from './time-clock-card/time-clock-card.component';
+import { IssueFilterComponent } from './issue-filter/issue-filter.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, DashboardComponent, ProjectsComponent, IssuesComponent, TimeClocksComponent, UsersComponent, ProjectCardComponent, PaginationControlsComponent, IssueCardComponent, UserCardComponent, TimeClockCardComponent],
+  declarations: [AppComponent, HomeComponent, DashboardComponent, ProjectsComponent, IssuesComponent, TimeClocksComponent, UsersComponent, ProjectCardComponent, PaginationControlsComponent, IssueCardComponent, UserCardComponent, TimeClockCardComponent, IssueFilterComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

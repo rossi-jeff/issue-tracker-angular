@@ -13,9 +13,10 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  public get(options: { path: string }) {
+  public get(options: { path: string; params?: { [key: string]: string } }) {
     return this.http.get(`${this.baseUrl}/${options.path}`, {
       headers: this.headers,
+      params: options.params || {},
       observe: 'body',
       responseType: 'json',
     });

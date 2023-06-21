@@ -1,0 +1,95 @@
+<div class="card">
+  <button (click)="toggle()">Filter</button>
+  <div class="filter-content" id="issue-filter-content">
+    <div class="flex flex-wrap justify-between">
+      <div>
+        <label for="Priority">Priority</label>
+        <select name="Priority" (change)="selectChanged($event, 'Priority')">
+          <option value="">- select -</option>
+          <option
+            *ngFor="let p of priorities"
+            [value]="p"
+            [selected]="p == filter['Priority']"
+          >
+            {{ p }}
+          </option>
+        </select>
+      </div>
+      <div>
+        <label for="Status">Status</label>
+        <select name="Status" (change)="selectChanged($event, 'Status')">
+          <option value="">- select -</option>
+          <option
+            *ngFor="let s of statuses"
+            [value]="s"
+            [selected]="s == filter['Status']"
+          >
+            {{ s }}
+          </option>
+        </select>
+      </div>
+      <div>
+        <label for="Type">Type</label>
+        <select name="Type" (change)="selectChanged($event, 'Type')">
+          <option value="">- select -</option>
+          <option
+            *ngFor="let t of types"
+            [value]="t"
+            [selected]="t == filter['Type']"
+          >
+            {{ t }}
+          </option>
+        </select>
+      </div>
+      <div>
+        <label for="Complexity">Complexity</label>
+        <select
+          name="Complexity"
+          (change)="selectChanged($event, 'Complexity')"
+        >
+          <option value="">- select -</option>
+          <option
+            *ngFor="let c of complexities"
+            [value]="c"
+            [selected]="c == filter['Complexity']"
+          >
+            {{ c }}
+          </option>
+        </select>
+      </div>
+      <div>
+        <label for="AuthorId">Author</label>
+        <select name="AuthorId" (change)="selectChanged($event, 'AuthorId')">
+          <option value="">- select -</option>
+          <option
+            *ngFor="let u of users"
+            [value]="u.Id"
+            [selected]="u.Id && u.Id.toString() == filter['AuthorId']"
+          >
+            {{ fullName(u) }}
+          </option>
+        </select>
+      </div>
+      <div>
+        <label for="AssignedToId">Assigned</label>
+        <select
+          name="AssignedToId"
+          (change)="selectChanged($event, 'AssignedToId')"
+        >
+          <option value="">- select -</option>
+          <option
+            *ngFor="let u of users"
+            [value]="u.Id"
+            [selected]="u.Id && u.Id.toString() == filter['AssignedToId']"
+          >
+            {{ fullName(u) }}
+          </option>
+        </select>
+      </div>
+      <div>
+        <label>&nbsp;</label>
+        <button (click)="clearFilters()">Clear filters</button>
+      </div>
+    </div>
+  </div>
+</div>
