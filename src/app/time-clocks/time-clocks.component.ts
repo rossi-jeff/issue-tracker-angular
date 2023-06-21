@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { TimeClockType } from '../../types/time-clock.type';
+import { IssueType } from '../../types/issue.type';
+import { UserType } from '../../types/user.type';
+import { ProjectType } from '../../types/project.type';
 
 @Component({
   selector: 'app-time-clocks',
@@ -10,6 +13,9 @@ import { TimeClockType } from '../../types/time-clock.type';
 export class TimeClocksComponent implements OnInit {
   timeClocks: TimeClockType[] = [];
   paginated: TimeClockType[] = [];
+  issues: IssueType[] = [];
+  users: UserType[] = [];
+  projects: ProjectType[] = [];
 
   count: number = 0;
   offset: number = 0;
@@ -22,6 +28,24 @@ export class TimeClocksComponent implements OnInit {
       this.timeClocks = result;
       this.count = this.timeClocks.length;
       this.setPaginated();
+    });
+  };
+
+  loadUsers = () => {
+    this.api.get({ path: 'user' }).subscribe((result: any) => {
+      this.users = result;
+    });
+  };
+
+  loadIssues = () => {
+    this.api.get({ path: 'issue ' }).subscribe((result: any) => {
+      this.issues = result;
+    });
+  };
+
+  loadProjects = () => {
+    this.api.get({ path: 'project' }).subscribe((result: any) => {
+      this.projects = result;
     });
   };
 
@@ -41,7 +65,22 @@ export class TimeClocksComponent implements OnInit {
     this.paginated = this.timeClocks.slice(offset, offset + limit);
   };
 
+  filterTimeClocks = (filter: { [key: string]: string }) => {
+    if (Object.keys(filter).length) {
+      this.api
+        .get({ path: 'timeclock', params: filter })
+        .subscribe((result: any) => {
+          this.timeClocks = result;
+          this.count = this.timeClocks.length;
+          this.setPaginated();
+        });
+    } else this.loadTimeClocks();
+  };
+
   ngOnInit(): void {
     this.loadTimeClocks();
+    this.loadUsers();
+    this.loadIssues();
+    this.loadProjects();
   }
 }
