@@ -1,1 +1,14 @@
-<p>projects works!</p>
+<h1>Projects</h1>
+
+<app-project-card
+  *ngFor="let project of paginated"
+  [project]="project"
+></app-project-card>
+
+<app-pagination-controls
+  [count]="count"
+  [limit]="limit"
+  [offset]="offset"
+  (pageChanged)="pageChanged($event)"
+  (limitChanged)="limitChanged($event)"
+></app-pagination-controls>
