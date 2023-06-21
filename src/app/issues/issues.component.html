@@ -1,1 +1,14 @@
-<p>issues works!</p>
+<h1>Issues</h1>
+
+<app-issue-card
+  *ngFor="let issue of paginated"
+  [issue]="issue"
+></app-issue-card>
+
+<app-pagination-controls
+  [count]="count"
+  [limit]="limit"
+  [offset]="offset"
+  (pageChanged)="pageChanged($event)"
+  (limitChanged)="limitChanged($event)"
+></app-pagination-controls>

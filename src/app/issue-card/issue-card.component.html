@@ -1,0 +1,41 @@
+<div class="card">
+  <h2>{{ issue.SequenceNumber }}</h2>
+  <div>{{ issue.Title }}</div>
+  <div *ngIf="issue.Project">
+    <strong>Project</strong>
+    {{ issue.Project.Name }}
+  </div>
+  <div class="flex flex-wrap justify-between">
+    <div>
+      <strong>Priority</strong>
+      {{ issue.Priority }}
+    </div>
+    <div>
+      <strong>Status</strong>
+      {{ issue.Status }}
+    </div>
+    <div>
+      <strong>Type</strong>
+      {{ issue.Type }}
+    </div>
+    <div>
+      <strong>Complexity</strong>
+      {{ issue.Complexity }}
+    </div>
+  </div>
+  <div>{{ issue.Details }}</div>
+  <div class="flex flex-wrap justify-between">
+    <div>
+      <strong>Created</strong>
+      {{ issue.Created }}
+    </div>
+    <div>
+      <strong>Author</strong>
+      {{ author }}
+    </div>
+    <div>
+      <strong>AssignedTo</strong>
+      {{ assignedTo }}
+    </div>
+  </div>
+</div>

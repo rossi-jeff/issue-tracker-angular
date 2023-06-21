@@ -12,9 +12,10 @@ import { TimeClocksComponent } from './time-clocks/time-clocks.component';
 import { UsersComponent } from './users/users.component';
 import { ProjectCardComponent } from './project-card/project-card.component';
 import { PaginationControlsComponent } from './pagination-controls/pagination-controls.component';
+import { IssueCardComponent } from './issue-card/issue-card.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, DashboardComponent, ProjectsComponent, IssuesComponent, TimeClocksComponent, UsersComponent, ProjectCardComponent, PaginationControlsComponent],
+  declarations: [AppComponent, HomeComponent, DashboardComponent, ProjectsComponent, IssuesComponent, TimeClocksComponent, UsersComponent, ProjectCardComponent, PaginationControlsComponent, IssueCardComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
