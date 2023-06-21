@@ -1,1 +1,14 @@
-<p>time-clocks works!</p>
+<h1>Time Clocks</h1>
+
+<app-time-clock-card
+  *ngFor="let timeClock of paginated"
+  [timeClock]="timeClock"
+></app-time-clock-card>
+
+<app-pagination-controls
+  [count]="count"
+  [limit]="limit"
+  [offset]="offset"
+  (pageChanged)="pageChanged($event)"
+  (limitChanged)="limitChanged($event)"
+></app-pagination-controls>
