@@ -1,0 +1,56 @@
+<div class="card">
+  <button (click)="toggleContent()">
+    {{ issue.SequenceNumber }}
+  </button>
+  <div
+    class="dashboard-card-content"
+    id="dashboard-card-content-{{ issue.Id }}"
+  >
+    <div class="font-bold mb-2">{{ issue.Title }}</div>
+    <button (click)="toggleDescription()">Description</button>
+    <div
+      class="dashboard-card-description"
+      id="dashboard-card-description-{{ issue.Id }}"
+    >
+      {{ issue.Details }}
+    </div>
+    <button (click)="toggleDetails()">Details</button>
+    <div
+      class="dashboard-card-details"
+      id="dashboard-card-details-{{ issue.Id }}"
+    >
+      <div>
+        <strong>Project</strong>
+        {{ project }}
+      </div>
+      <div>
+        <strong>Priority</strong>
+        {{ issue.Priority }}
+      </div>
+      <div>
+        <strong>Status</strong>
+        {{ issue.Status }}
+      </div>
+      <div>
+        <strong>Type</strong>
+        {{ issue.Type }}
+      </div>
+      <div>
+        <strong>Complexity</strong>
+        {{ issue.Complexity }}
+      </div>
+      <div>
+        <strong>Created</strong>
+        {{ issue.Created }}
+      </div>
+      <div>
+        <strong>Author</strong>
+        {{ author }}
+      </div>
+      <div>
+        <strong>Assigned</strong>
+        {{ assignedTo }}
+      </div>
+    </div>
+  </div>
+</div>

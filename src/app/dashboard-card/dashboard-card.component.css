@@ -1,0 +1,19 @@
+.dashboard-card-content,
+.dashboard-card-description,
+.dashboard-card-details {
+  @apply m-2 transition hidden;
+}
+
+.dashboard-card-content.open,
+.dashboard-card-description.open,
+.dashboard-card-details.open {
+  @apply block;
+}
+
+button {
+  @apply w-full text-left px-2 py-1 font-bold bg-slate-300;
+}
+
+.dashboard-card-content button {
+  @apply mb-2;
+}
