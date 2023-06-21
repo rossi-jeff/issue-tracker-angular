@@ -1,0 +1,6 @@
+.dashboard-column-wrapper {
+  @apply w-[23%];
+}
+.dashboard-column {
+  @apply h-96 overflow-y-auto pr-4;
+}

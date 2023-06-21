@@ -1,1 +1,47 @@
-<p>dashboard works!</p>
+<div class="flex flex-wrap justify-between">
+  <div class="dashboard-column-wrapper">
+    <h2>New</h2>
+    <div class="dashboard-column" id="column-New">
+      <app-dashboard-card
+        *ngFor="let issue of sorted['New']"
+        [issue]="issue"
+      ></app-dashboard-card>
+    </div>
+  </div>
+  <div class="dashboard-column-wrapper">
+    <h2>Assigned</h2>
+    <div class="dashboard-column" id="column-Assigned">
+      <app-dashboard-card
+        *ngFor="let issue of sorted['Assigned']"
+        [issue]="issue"
+      ></app-dashboard-card>
+    </div>
+  </div>
+  <div class="dashboard-column-wrapper">
+    <h2>Accepted</h2>
+    <div class="dashboard-column" id="column-Accepted">
+      <app-dashboard-card
+        *ngFor="let issue of sorted['Accepted']"
+        [issue]="issue"
+      ></app-dashboard-card>
+    </div>
+  </div>
+  <div class="dashboard-column-wrapper">
+    <h2>Fixed</h2>
+    <div class="dashboard-column" id="column-Fixed">
+      <app-dashboard-card
+        *ngFor="let issue of sorted['Fixed']"
+        [issue]="issue"
+      ></app-dashboard-card>
+    </div>
+  </div>
+</div>
+<div>
+  <h2>Other</h2>
+  <div class="dashboard-column" id="column-Other">
+    <app-dashboard-card
+      *ngFor="let issue of sorted['Other']"
+      [issue]="issue"
+    ></app-dashboard-card>
+  </div>
+</div>
