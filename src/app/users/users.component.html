@@ -1,1 +1,11 @@
-<p>users works!</p>
+<h1>Users</h1>
+
+<app-user-card *ngFor="let user of paginated" [user]="user"></app-user-card>
+
+<app-pagination-controls
+  [count]="count"
+  [limit]="limit"
+  [offset]="offset"
+  (pageChanged)="pageChanged($event)"
+  (limitChanged)="limitChanged($event)"
+></app-pagination-controls>
