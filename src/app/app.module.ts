@@ -16,9 +16,10 @@ import { IssueCardComponent } from './issue-card/issue-card.component';
 import { UserCardComponent } from './user-card/user-card.component';
 import { TimeClockCardComponent } from './time-clock-card/time-clock-card.component';
 import { IssueFilterComponent } from './issue-filter/issue-filter.component';
+import { TimeClockFilterComponent } from './time-clock-filter/time-clock-filter.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, DashboardComponent, ProjectsComponent, IssuesComponent, TimeClocksComponent, UsersComponent, ProjectCardComponent, PaginationControlsComponent, IssueCardComponent, UserCardComponent, TimeClockCardComponent, IssueFilterComponent],
+  declarations: [AppComponent, HomeComponent, DashboardComponent, ProjectsComponent, IssuesComponent, TimeClocksComponent, UsersComponent, ProjectCardComponent, PaginationControlsComponent, IssueCardComponent, UserCardComponent, TimeClockCardComponent, IssueFilterComponent, TimeClockFilterComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

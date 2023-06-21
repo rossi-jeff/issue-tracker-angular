@@ -1,0 +1,70 @@
+<div class="card">
+  <button (click)="toggle()">Filter</button>
+  <div class="filter-content" id="time-clock-filter-content">
+    <div class="flex flex-wrap justify-between">
+      <div>
+        <label for="UserId">User</label>
+        <select name="UserId" (change)="selectChanged($event, 'UserId')">
+          <option value="">- select -</option>
+          <option
+            *ngFor="let u of users"
+            [value]="u.Id"
+            [selected]="u.Id && u.Id.toString() == filter['UserId']"
+          >
+            {{ fullName(u) }}
+          </option>
+        </select>
+      </div>
+      <div>
+        <label for="ProjectId">Project</label>
+        <select name="ProjectId" (change)="selectChanged($event, 'ProjectId')">
+          <option value="">- select -</option>
+          <option
+            *ngFor="let p of projects"
+            [value]="p.Id"
+            [selected]="p.Id && p.Id.toString() == filter['ProjectId']"
+          >
+            {{ p.Name }}
+          </option>
+        </select>
+      </div>
+      <div>
+        <label for="IssueId">Issue</label>
+        <select name="IssueId" (change)="selectChanged($event, 'IssueId')">
+          <option value="">- select -</option>
+          <option
+            *ngFor="let i of issues"
+            [value]="i.Id"
+            [selected]="i.Id && i.Id.toString() == filter['IssueId']"
+          >
+            {{ i.SequenceNumber }} | {{ i.Title }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="flex flex-wrap justify-between">
+      <div>
+        <label for="StartDate">Start Date</label>
+        <input
+          type="date"
+          name="StartDate"
+          [value]="filter['StartDate']"
+          (change)="dateChanged($event, 'StartDate')"
+        />
+      </div>
+      <div>
+        <label for="EndDate">End Date</label>
+        <input
+          type="date"
+          name="EndDate"
+          [value]="filter['EndDate']"
+          (change)="dateChanged($event, 'EndDate')"
+        />
+      </div>
+      <div>
+        <label>&nbsp;</label>
+        <button (click)="clearFilters()">Clear filters</button>
+      </div>
+    </div>
+  </div>
+</div>
