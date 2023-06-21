@@ -14,9 +14,10 @@ import { ProjectCardComponent } from './project-card/project-card.component';
 import { PaginationControlsComponent } from './pagination-controls/pagination-controls.component';
 import { IssueCardComponent } from './issue-card/issue-card.component';
 import { UserCardComponent } from './user-card/user-card.component';
+import { TimeClockCardComponent } from './time-clock-card/time-clock-card.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, DashboardComponent, ProjectsComponent, IssuesComponent, TimeClocksComponent, UsersComponent, ProjectCardComponent, PaginationControlsComponent, IssueCardComponent, UserCardComponent],
+  declarations: [AppComponent, HomeComponent, DashboardComponent, ProjectsComponent, IssuesComponent, TimeClocksComponent, UsersComponent, ProjectCardComponent, PaginationControlsComponent, IssueCardComponent, UserCardComponent, TimeClockCardComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
