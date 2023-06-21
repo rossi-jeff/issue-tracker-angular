@@ -13,3 +13,11 @@ h2 {
 .card {
   @apply border border-black rounded p-2 mb-2;
 }
+
+.filter-content {
+  @apply border border-dashed rounded border-black p-2 mt-2 hidden transition-all;
+}
+
+.filter-content.open {
+  @apply block;
+}
