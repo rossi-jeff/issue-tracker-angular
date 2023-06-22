@@ -5,10 +5,12 @@ import { UserType } from '../../types/user.type';
 import { ProjectType } from '../../types/project.type';
 import {
   IssueDialogComponent,
+  IssueFormType,
   blankIssueForm,
 } from '../issue-dialog/issue-dialog.component';
 import { clone } from '../../lib/clone';
 import { UserSessionStorage } from '../../lib/user-session';
+import { RemoveBlanks } from '../../lib/remove-blanks';
 
 @Component({
   selector: 'app-issues',
@@ -100,4 +102,38 @@ export class IssuesComponent implements OnInit {
     this.loadUsers();
     this.loadProjects();
   }
+
+  createIssue = (ev: IssueFormType) => {
+    const payload = RemoveBlanks(ev);
+    this.api
+      .post({
+        path: 'issue',
+        body: payload,
+        token: this.session.data.Token ? this.session.data.Token : undefined,
+      })
+      .subscribe((result) => {
+        this.issues.push(result);
+        this.count = this.issues.length;
+        this.setPaginated();
+        this.dialog.hideNew();
+      });
+  };
+
+  updateIssue = (ev: IssueFormType) => {
+    const { UUID, ...payload } = RemoveBlanks(ev);
+    this.api
+      .patch({
+        path: `issue/${UUID}`,
+        body: payload,
+        token: this.session.data.Token ? this.session.data.Token : undefined,
+      })
+      .subscribe((result) => {
+        const idx = this.issues.findIndex((i) => i.UUID == UUID);
+        if (idx != -1) {
+          this.issues[idx] = result;
+          this.setPaginated();
+          this.dialog.hideEdit();
+        }
+      });
+  };
 }

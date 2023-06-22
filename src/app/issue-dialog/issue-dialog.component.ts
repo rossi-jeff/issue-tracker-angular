@@ -145,4 +145,12 @@ export class IssueDialogComponent {
     if (dialog) dialog.classList.remove('open');
     this.hideOverlay();
   };
+
+  createIssueClicked = () => {
+    this.createIssue.emit(this.newIssueForm.value);
+  };
+
+  updateIssueClicked = () => {
+    this.updateIssue.emit(this.editIssueForm.value);
+  };
 }

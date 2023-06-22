@@ -29,4 +29,6 @@
   [projects]="projects"
   [newIssue]="editor['new']"
   [editIssue]="editor['edit']"
+  (createIssue)="createIssue($event)"
+  (updateIssue)="updateIssue($event)"
 ></app-issue-dialog>
