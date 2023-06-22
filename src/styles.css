@@ -21,3 +21,16 @@ h2 {
 .filter-content.open {
   @apply block;
 }
+
+.modal-overlay {
+  @apply fixed inset-0 bg-gray-500 bg-opacity-70 overflow-y-auto w-full h-full hidden;
+}
+
+.modal-fit {
+  @apply max-w-fit border border-black bg-white p-2 mx-auto hidden relative top-24;
+}
+
+.modal-overlay.open,
+.modal-fit.open {
+  @apply block;
+}

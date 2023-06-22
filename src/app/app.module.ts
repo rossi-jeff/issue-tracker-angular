@@ -18,10 +18,34 @@ import { TimeClockCardComponent } from './time-clock-card/time-clock-card.compon
 import { IssueFilterComponent } from './issue-filter/issue-filter.component';
 import { TimeClockFilterComponent } from './time-clock-filter/time-clock-filter.component';
 import { DashboardCardComponent } from './dashboard-card/dashboard-card.component';
+import { SignInDialogComponent } from './sign-in-dialog/sign-in-dialog.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, DashboardComponent, ProjectsComponent, IssuesComponent, TimeClocksComponent, UsersComponent, ProjectCardComponent, PaginationControlsComponent, IssueCardComponent, UserCardComponent, TimeClockCardComponent, IssueFilterComponent, TimeClockFilterComponent, DashboardCardComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    DashboardComponent,
+    ProjectsComponent,
+    IssuesComponent,
+    TimeClocksComponent,
+    UsersComponent,
+    ProjectCardComponent,
+    PaginationControlsComponent,
+    IssueCardComponent,
+    UserCardComponent,
+    TimeClockCardComponent,
+    IssueFilterComponent,
+    TimeClockFilterComponent,
+    DashboardCardComponent,
+    SignInDialogComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
