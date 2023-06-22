@@ -1,0 +1,19 @@
+<div class="modal-overlay" id="sign-in-overlay">
+  <div class="modal-fit" id="sign-in-dialog">
+    <h2>Sign In</h2>
+    <form class="my-2" [formGroup]="signInForm">
+      <div class="mb-2">
+        <label for="user-name">Username</label>
+        <input type="text" name="user-name" formControlName="Username" />
+      </div>
+      <div>
+        <label for="pass-word">Password</label>
+        <input type="password" name="pass-word" formControlName="Password" />
+      </div>
+    </form>
+    <div class="flex flex-wrap justify-between">
+      <button (click)="hideSignIn()">Cancel</button>
+      <button (click)="signInClicked()">Sign In</button>
+    </div>
+  </div>
+</div>
