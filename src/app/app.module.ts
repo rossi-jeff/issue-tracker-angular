@@ -20,6 +20,7 @@ import { TimeClockFilterComponent } from './time-clock-filter/time-clock-filter.
 import { DashboardCardComponent } from './dashboard-card/dashboard-card.component';
 import { SignInDialogComponent } from './sign-in-dialog/sign-in-dialog.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProjectDialogComponent } from './project-dialog/project-dialog.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     TimeClockFilterComponent,
     DashboardCardComponent,
     SignInDialogComponent,
+    ProjectDialogComponent,
   ],
   imports: [
     BrowserModule,

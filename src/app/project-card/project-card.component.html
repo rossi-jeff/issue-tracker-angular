@@ -1,4 +1,13 @@
 <div class="card">
-  <h2>{{ project.Name }}</h2>
+  <div class="flex flex-wrap">
+    <button
+      class="mr-4"
+      *ngIf="session.data.signedIn"
+      (click)="editProjectClicked()"
+    >
+      Edit
+    </button>
+    <h2>{{ project.Name }}</h2>
+  </div>
   <div>{{ project.Details }}</div>
 </div>
