@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IssueType } from '../../types/issue.type';
-import { getFullName } from 'src/lib/get-full-name';
+import { getFullName } from '../../lib/get-full-name';
+import { UserSessionStorage } from '../../lib/user-session';
 
 @Component({
   selector: 'app-issue-card',
@@ -9,9 +10,17 @@ import { getFullName } from 'src/lib/get-full-name';
 })
 export class IssueCardComponent implements OnInit {
   @Input() issue!: IssueType;
+  @Output() editIssue = new EventEmitter<string>();
 
   author: string = '';
   assignedTo: string = '';
+
+  session: UserSessionStorage = new UserSessionStorage();
+
+  editIssueClicked = () => {
+    const { UUID } = this.issue;
+    this.editIssue.emit(UUID);
+  };
 
   ngOnInit(): void {
     this.author = this.issue.Author ? getFullName(this.issue.Author) : 'N/A';
