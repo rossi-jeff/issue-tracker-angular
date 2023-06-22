@@ -13,10 +13,12 @@ export type CredentialsType = {
 })
 export class SignInDialogComponent {
   @Output() signIn = new EventEmitter<CredentialsType>();
-  
+
+  credentials: CredentialsType = {};
+
   signInForm = new FormGroup({
-    Username: new FormControl('', Validators.required),
-    Password: new FormControl('', Validators.required),
+    Username: new FormControl(this.credentials.Username, Validators.required),
+    Password: new FormControl(this.credentials.Username, Validators.required),
   });
 
   showOverlay = () => {

@@ -1,4 +1,12 @@
-<button class="ml-4 mt-2" (click)="signInClicked()">Sign In</button>
+<div class="ml-4 mt-2">
+  <button (click)="signInClicked()" *ngIf="!session.data.signedIn">
+    Sign In
+  </button>
+  <span *ngIf="session.data.signedIn" class="font-bold mr-4">{{
+    session.data.UserName
+  }}</span>
+  <button (click)="signOut()" *ngIf="session.data.signedIn">Sign Out</button>
+</div>
 
 <div class="flex flex-wrap justify-between mx-4 mt-2">
   <button routerLink="/">Home</button>
