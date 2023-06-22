@@ -1,5 +1,15 @@
 <div class="card">
-  <h2>{{ issue.SequenceNumber }}</h2>
+  <div class="flex flex-wrap">
+    <button
+      class="mr-4"
+      (click)="editIssueClicked()"
+      *ngIf="session.data.signedIn"
+    >
+      Edit
+    </button>
+    <h2>{{ issue.SequenceNumber }}</h2>
+  </div>
+
   <div>{{ issue.Title }}</div>
   <div *ngIf="issue.Project">
     <strong>Project</strong>

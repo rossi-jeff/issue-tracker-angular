@@ -1,4 +1,9 @@
-<h1>Issues</h1>
+<div class="flex flex-wrap">
+  <h1>Issues</h1>
+  <button class="ml-4" *ngIf="session.data.signedIn" (click)="newIssue()">
+    New Issue
+  </button>
+</div>
 
 <app-issue-filter
   [users]="users"
@@ -8,6 +13,7 @@
 <app-issue-card
   *ngFor="let issue of paginated"
   [issue]="issue"
+  (editIssue)="editIssue($event)"
 ></app-issue-card>
 
 <app-pagination-controls
@@ -17,3 +23,12 @@
   (pageChanged)="pageChanged($event)"
   (limitChanged)="limitChanged($event)"
 ></app-pagination-controls>
+
+<app-issue-dialog
+  [users]="users"
+  [projects]="projects"
+  [newIssue]="editor['new']"
+  [editIssue]="editor['edit']"
+  (createIssue)="createIssue($event)"
+  (updateIssue)="updateIssue($event)"
+></app-issue-dialog>

@@ -21,6 +21,7 @@ import { DashboardCardComponent } from './dashboard-card/dashboard-card.componen
 import { SignInDialogComponent } from './sign-in-dialog/sign-in-dialog.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProjectDialogComponent } from './project-dialog/project-dialog.component';
+import { IssueDialogComponent } from './issue-dialog/issue-dialog.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { ProjectDialogComponent } from './project-dialog/project-dialog.componen
     DashboardCardComponent,
     SignInDialogComponent,
     ProjectDialogComponent,
+    IssueDialogComponent,
   ],
   imports: [
     BrowserModule,

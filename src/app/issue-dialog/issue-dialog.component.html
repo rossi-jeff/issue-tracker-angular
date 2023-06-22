@@ -1,0 +1,152 @@
+<div class="modal-overlay" id="issue-overlay">
+  <div class="modal-50p" id="new-issue-dialog">
+    <h2>New Issue</h2>
+    <form [formGroup]="newIssueForm" id="new-issue-form">
+      <div class="my-2">
+        <div>
+          <label for="project-id">Project</label>
+          <select name="project-id" id="project-id" formControlName="ProjectId">
+            <option value="">- select -</option>
+            <option *ngFor="let p of projects" [value]="p.Id">
+              {{ p.Sequence ? p.Sequence.Prefix : "" }}
+              |
+              {{ p.Name }}
+            </option>
+          </select>
+        </div>
+        <div>
+          <label for="title">Title</label>
+          <input type="text" name="title" formControlName="Title" />
+        </div>
+        <div>
+          <label for="details">Details</label>
+          <textarea name="details" formControlName="Details"></textarea>
+        </div>
+        <div class="flex flex-wrap justify-between">
+          <div>
+            <label for="priority">Priority</label>
+            <select name="priority" formControlName="Priority">
+              <option value="">- select -</option>
+              <option *ngFor="let p of priorities" [value]="p">{{ p }}</option>
+            </select>
+          </div>
+          <div>
+            <label for="status">Status</label>
+            <select name="status" formControlName="Status">
+              <option value="">- select -</option>
+              <option *ngFor="let s of statuses" [value]="s">{{ s }}</option>
+            </select>
+          </div>
+          <div>
+            <label for="type">Type</label>
+            <select name="type" formControlName="Type">
+              <option value="">- select -</option>
+              <option *ngFor="let t of types" [value]="t">{{ t }}</option>
+            </select>
+          </div>
+          <div>
+            <label for="complexity">Complexity</label>
+            <select name="complexity" formControlName="Complexity">
+              <option value="">- select -</option>
+              <option *ngFor="let c of complexities" [value]="c">
+                {{ c }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label for="assigned-to-id">Assigned</label>
+          <select
+            name="assigned-to-id"
+            id="assigned-to-id"
+            formControlName="AssignedToId"
+          >
+            <option value="">- select -</option>
+            <option *ngFor="let u of users" [value]="u.Id">
+              {{ fullName(u) }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </form>
+    <div class="flex flex-wrap justify-between">
+      <button (click)="hideNew()">Cancel</button>
+      <button (click)="createIssueClicked()">Create Issue</button>
+    </div>
+  </div>
+  <div class="modal-50p" id="edit-issue-dialog">
+    <h2>Edit Issue ({{ editIssue.SequenceNumber }})</h2>
+    <form [formGroup]="editIssueForm" id="edit-issue-form">
+      <div class="my-2">
+        <div>
+          <label for="project-id">Project</label>
+          <select name="project-id" id="project-id" formControlName="ProjectId">
+            <option value="">- select -</option>
+            <option *ngFor="let p of projects" [value]="p.Id">
+              {{ p.Sequence ? p.Sequence.Prefix : "" }}
+              |
+              {{ p.Name }}
+            </option>
+          </select>
+        </div>
+        <div>
+          <label for="title">Title</label>
+          <input type="text" name="title" formControlName="Title" />
+        </div>
+        <div>
+          <label for="details">Details</label>
+          <textarea name="details" formControlName="Details"></textarea>
+        </div>
+        <div class="flex flex-wrap justify-between">
+          <div>
+            <label for="priority">Priority</label>
+            <select name="priority" formControlName="Priority">
+              <option value="">- select -</option>
+              <option *ngFor="let p of priorities" [value]="p">{{ p }}</option>
+            </select>
+          </div>
+          <div>
+            <label for="status">Status</label>
+            <select name="status" formControlName="Status">
+              <option value="">- select -</option>
+              <option *ngFor="let s of statuses" [value]="s">{{ s }}</option>
+            </select>
+          </div>
+          <div>
+            <label for="type">Type</label>
+            <select name="type" formControlName="Type">
+              <option value="">- select -</option>
+              <option *ngFor="let t of types" [value]="t">{{ t }}</option>
+            </select>
+          </div>
+          <div>
+            <label for="complexity">Complexity</label>
+            <select name="complexity" formControlName="Complexity">
+              <option value="">- select -</option>
+              <option *ngFor="let c of complexities" [value]="c">
+                {{ c }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label for="assigned-to-id">Assigned</label>
+          <select
+            name="assigned-to-id"
+            id="assigned-to-id"
+            formControlName="AssignedToId"
+          >
+            <option value="">- select -</option>
+            <option *ngFor="let u of users" [value]="u.Id">
+              {{ fullName(u) }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </form>
+    <div class="flex flex-wrap justify-between">
+      <button (click)="hideEdit()">Cancel</button>
+      <button (click)="updateIssueClicked()">Update Issue</button>
+    </div>
+  </div>
+</div>
