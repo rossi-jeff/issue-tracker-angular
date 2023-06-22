@@ -1,0 +1,40 @@
+<div class="modal-overlay" id="project-overlay">
+  <div class="modal-40p" id="new-project-dialog">
+    <h2>New Project</h2>
+    <form id="new-project-form" [formGroup]="newProjectForm">
+      <div class="my-2">
+        <div>
+          <label for="name">Name</label>
+          <input type="text" name="name" formControlName="Name" />
+        </div>
+        <div>
+          <label for="details">Details</label>
+          <textarea name="details" formControlName="Details"></textarea>
+        </div>
+      </div>
+    </form>
+    <div class="flex flex-wrap justify-between">
+      <button (click)="hideNew()">Cancel</button>
+      <button (click)="createProjectClicked()">Create Project</button>
+    </div>
+  </div>
+  <div class="modal-40p" id="edit-project-dialog">
+    <h2>Edit Project</h2>
+    <form id="edit-project-form" [formGroup]="editProjectForm">
+      <div class="my-2">
+        <div>
+          <label for="name">Name</label>
+          <input type="text" name="name" formControlName="Name" />
+        </div>
+        <div>
+          <label for="details">Details</label>
+          <textarea name="details" formControlName="Details"></textarea>
+        </div>
+      </div>
+    </form>
+    <div class="flex flex-wrap justify-between">
+      <button (click)="hideEdit()">Cancel</button>
+      <button (click)="updateProjectClicked()">Update Project</button>
+    </div>
+  </div>
+</div>

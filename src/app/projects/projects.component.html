@@ -1,8 +1,14 @@
-<h1>Projects</h1>
+<div class="flex flex-wrap">
+  <h1>Projects</h1>
+  <button class="ml-4" *ngIf="session.data.signedIn" (click)="newProject()">
+    New Project
+  </button>
+</div>
 
 <app-project-card
   *ngFor="let project of paginated"
   [project]="project"
+  (editProject)="editProject($event)"
 ></app-project-card>
 
 <app-pagination-controls
@@ -12,3 +18,10 @@
   (pageChanged)="pageChanged($event)"
   (limitChanged)="limitChanged($event)"
 ></app-pagination-controls>
+
+<app-project-dialog
+  [newProject]="editor['new']"
+  [editProject]="editor['edit']"
+  (createProject)="createProject($event)"
+  (updateProject)="updateProject($event)"
+></app-project-dialog>
