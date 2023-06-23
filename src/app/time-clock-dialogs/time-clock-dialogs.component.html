@@ -1,0 +1,150 @@
+<div class="modal-overlay" id="time-clock-overlay">
+  <div class="modal-50p" id="new-time-clock-dialog">
+    <h2>New Time Clock</h2>
+    <form [formGroup]="newTimeClockForm">
+      <div class="my-2">
+        <div class="flex flex-wrap justify-between mb-2">
+          <div>
+            <label for="UserId">User</label>
+            <select name="UserId" formControlName="UserId">
+              <option value="">- select -</option>
+              <option *ngFor="let u of users" [value]="u.Id">
+                {{ fullName(u) }}
+              </option>
+            </select>
+          </div>
+          <div>
+            <label for="ProjectId">Project</label>
+            <select
+              name="ProjectId"
+              formControlName="ProjectId"
+              (change)="filterNewIssues()"
+            >
+              <option value="">- select -</option>
+              <option *ngFor="let p of projects" [value]="p.Id">
+                {{ p.Sequence ? p.Sequence.Prefix : "" }}
+                |
+                {{ p.Name }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="mb-2">
+          <label for="IssueId">Issue</label>
+          <select name="IssueId" formControlName="IssueId">
+            <option value="">- select -</option>
+            <option *ngFor="let i of newIssues" [value]="i.Id">
+              {{ i.SequenceNumber }} | {{ i.Title }}
+            </option>
+          </select>
+        </div>
+        <div class="flex flex-wrap justify-between">
+          <div formGroupName="Start">
+            <label>Start</label>
+            <div class="flex flex-wrap justify-between">
+              <div class="mr-4">
+                <label for="Date">Date</label>
+                <input type="date" name="Date" formControlName="Date" />
+              </div>
+              <div>
+                <label for="Time">Time</label>
+                <input type="time" name="Time" formControlName="Time" />
+              </div>
+            </div>
+          </div>
+          <div formGroupName="End">
+            <label>End</label>
+            <div class="flex flex-wrap justify-between">
+              <div class="mr-4">
+                <label for="Date">Date</label>
+                <input type="date" name="Date" formControlName="Date" />
+              </div>
+              <div>
+                <label for="Time">Time</label>
+                <input type="time" name="Time" formControlName="Time" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="flex flex-wrap justify-between">
+      <button (click)="hideNew()">Cancel</button>
+      <button>Create Time Clock</button>
+    </div>
+  </div>
+  <div class="modal-50p" id="edit-time-clock-dialog">
+    <h2>Edit Time Clock</h2>
+    <form [formGroup]="editTimeClockForm">
+      <div class="my-2">
+        <div class="flex flex-wrap justify-between mb-2">
+          <div>
+            <label for="UserId">User</label>
+            <select name="UserId" formControlName="UserId">
+              <option value="">- select -</option>
+              <option *ngFor="let u of users" [value]="u.Id">
+                {{ fullName(u) }}
+              </option>
+            </select>
+          </div>
+          <div>
+            <label for="ProjectId">Project</label>
+            <select
+              name="ProjectId"
+              formControlName="ProjectId"
+              (change)="filterEditIssues()"
+            >
+              <option value="">- select -</option>
+              <option *ngFor="let p of projects" [value]="p.Id">
+                {{ p.Sequence ? p.Sequence.Prefix : "" }}
+                |
+                {{ p.Name }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="mb-2">
+          <label for="IssueId">Issue</label>
+          <select name="IssueId" formControlName="IssueId">
+            <option value="">- select -</option>
+            <option *ngFor="let i of editIssues" [value]="i.Id">
+              {{ i.SequenceNumber }} | {{ i.Title }}
+            </option>
+          </select>
+        </div>
+        <div class="flex flex-wrap justify-between">
+          <div formGroupName="Start">
+            <label>Start</label>
+            <div class="flex flex-wrap justify-between">
+              <div class="mr-4">
+                <label for="Date">Date</label>
+                <input type="date" name="Date" formControlName="Date" />
+              </div>
+              <div>
+                <label for="Time">Time</label>
+                <input type="time" name="Time" formControlName="Time" />
+              </div>
+            </div>
+          </div>
+          <div formGroupName="End">
+            <label>End</label>
+            <div class="flex flex-wrap justify-between">
+              <div class="mr-4">
+                <label for="Date">Date</label>
+                <input type="date" name="Date" formControlName="Date" />
+              </div>
+              <div>
+                <label for="Time">Time</label>
+                <input type="time" name="Time" formControlName="Time" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="flex flex-wrap justify-between">
+      <button (click)="hideEdit()">Cancel</button>
+      <button>Update Time Clock</button>
+    </div>
+  </div>
+</div>

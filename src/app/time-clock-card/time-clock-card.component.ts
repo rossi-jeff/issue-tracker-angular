@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TimeClockType } from '../../types/time-clock.type';
 import { getFullName } from '../../lib/get-full-name';
 import { getTimeClockHours } from '../../lib/get-time-clock-hours';
 import { formatClock } from '../../lib/format-clock';
+import { UserSessionStorage } from '../../lib/user-session';
 
 @Component({
   selector: 'app-time-clock-card',
@@ -11,6 +12,9 @@ import { formatClock } from '../../lib/format-clock';
 })
 export class TimeClockCardComponent implements OnInit {
   @Input() timeClock!: TimeClockType;
+  @Output() editTimeClock = new EventEmitter<string>();
+
+  session: UserSessionStorage = new UserSessionStorage();
 
   user: string = '';
   project: string = '';
@@ -18,6 +22,11 @@ export class TimeClockCardComponent implements OnInit {
   from: string = '';
   to: string = '';
   hours: string = '';
+
+  editTimeclockClicked = () => {
+    const { UUID } = this.timeClock;
+    this.editTimeClock.emit(UUID);
+  };
 
   ngOnInit(): void {
     const { timeClock } = this;
