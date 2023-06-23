@@ -22,6 +22,7 @@ import { SignInDialogComponent } from './sign-in-dialog/sign-in-dialog.component
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProjectDialogComponent } from './project-dialog/project-dialog.component';
 import { IssueDialogComponent } from './issue-dialog/issue-dialog.component';
+import { DashboardDialogsComponent } from './dashboard-dialogs/dashboard-dialogs.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { IssueDialogComponent } from './issue-dialog/issue-dialog.component';
     SignInDialogComponent,
     ProjectDialogComponent,
     IssueDialogComponent,
+    DashboardDialogsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,47 +1,96 @@
 <div class="flex flex-wrap justify-between">
   <div class="dashboard-column-wrapper">
     <h2>New</h2>
-    <div class="dashboard-column" id="column-New">
+    <div
+      class="dashboard-column"
+      id="column-New"
+      (dragover)="dragOver($event)"
+      (dragenter)="dragEnter($event)"
+      (drop)="drop($event)"
+    >
       <app-dashboard-card
         *ngFor="let issue of sorted['New']"
         [issue]="issue"
+        [draggable]="session.data.signedIn"
+        from="New"
+        (dragStart)="dragStart($event)"
       ></app-dashboard-card>
     </div>
   </div>
   <div class="dashboard-column-wrapper">
     <h2>Assigned</h2>
-    <div class="dashboard-column" id="column-Assigned">
+    <div
+      class="dashboard-column"
+      id="column-Assigned"
+      (dragover)="dragOver($event)"
+      (dragenter)="dragEnter($event)"
+      (drop)="drop($event)"
+    >
       <app-dashboard-card
         *ngFor="let issue of sorted['Assigned']"
         [issue]="issue"
+        [draggable]="session.data.signedIn"
+        from="Assigned"
+        (dragStart)="dragStart($event)"
       ></app-dashboard-card>
     </div>
   </div>
   <div class="dashboard-column-wrapper">
     <h2>Accepted</h2>
-    <div class="dashboard-column" id="column-Accepted">
+    <div
+      class="dashboard-column"
+      id="column-Accepted"
+      (dragover)="dragOver($event)"
+      (dragenter)="dragEnter($event)"
+      (drop)="drop($event)"
+    >
       <app-dashboard-card
         *ngFor="let issue of sorted['Accepted']"
         [issue]="issue"
+        [draggable]="session.data.signedIn"
+        from="Accepted"
+        (dragStart)="dragStart($event)"
       ></app-dashboard-card>
     </div>
   </div>
   <div class="dashboard-column-wrapper">
     <h2>Fixed</h2>
-    <div class="dashboard-column" id="column-Fixed">
+    <div
+      class="dashboard-column"
+      id="column-Fixed"
+      (dragover)="dragOver($event)"
+      (dragenter)="dragEnter($event)"
+      (drop)="drop($event)"
+    >
       <app-dashboard-card
         *ngFor="let issue of sorted['Fixed']"
         [issue]="issue"
+        [draggable]="session.data.signedIn"
+        from="Fixed"
+        (dragStart)="dragStart($event)"
       ></app-dashboard-card>
     </div>
   </div>
 </div>
-<div>
+<div class="mt-2">
   <h2>Other</h2>
-  <div class="dashboard-column" id="column-Other">
+  <div
+    class="dashboard-column"
+    id="column-Other"
+    (dragover)="dragOver($event)"
+    (dragenter)="dragEnter($event)"
+    (drop)="drop($event)"
+  >
     <app-dashboard-card
       *ngFor="let issue of sorted['Other']"
       [issue]="issue"
+      [draggable]="session.data.signedIn"
+      from="Other"
+      (dragStart)="dragStart($event)"
     ></app-dashboard-card>
   </div>
 </div>
+
+<app-dashboard-dialogs
+  (setStatus)="setOtherStatus($event)"
+></app-dashboard-dialogs>

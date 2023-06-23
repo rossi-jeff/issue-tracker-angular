@@ -116,6 +116,7 @@ export class IssuesComponent implements OnInit {
         this.count = this.issues.length;
         this.setPaginated();
         this.dialog.hideNew();
+        this.editor['new'] = clone(blankIssueForm);
       });
   };
 

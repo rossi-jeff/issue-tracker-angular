@@ -1,0 +1,19 @@
+<div class="modal-overlay" id="dashboard-overlay">
+  <div class="modal-fit" id="other-status-dialog">
+    <h2>Select Status</h2>
+    <form [formGroup]="statusForm">
+      <div *ngFor="let s of statuses" class="py-1">
+        <input
+          type="radio"
+          id="status-{{ s }}"
+          [value]="s"
+          formControlName="Status"
+        />
+        <label for="status-{{ s }}">{{ s }}</label>
+      </div>
+    </form>
+    <div class="text-right">
+      <button (click)="setStatusClicked()">Set Status</button>
+    </div>
+  </div>
+</div>

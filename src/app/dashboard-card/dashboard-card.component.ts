@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IssueType } from '../../types/issue.type';
 import { getFullName } from '../../lib/get-full-name';
 
@@ -9,6 +9,9 @@ import { getFullName } from '../../lib/get-full-name';
 })
 export class DashboardCardComponent implements OnInit {
   @Input() issue!: IssueType;
+  @Input() draggable!: boolean;
+  @Input() from!: string;
+  @Output() dragStart = new EventEmitter<any>();
 
   project: string = '';
   author: string = '';
@@ -29,6 +32,10 @@ export class DashboardCardComponent implements OnInit {
 
   toggleDetails = () => {
     this.toggle(`dashboard-card-details-${this.issue.Id}`);
+  };
+
+  onDragStart = (ev: any) => {
+    this.dragStart.emit(ev);
   };
 
   ngOnInit(): void {
