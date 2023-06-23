@@ -23,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProjectDialogComponent } from './project-dialog/project-dialog.component';
 import { IssueDialogComponent } from './issue-dialog/issue-dialog.component';
 import { DashboardDialogsComponent } from './dashboard-dialogs/dashboard-dialogs.component';
+import { TimeClockDialogsComponent } from './time-clock-dialogs/time-clock-dialogs.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { DashboardDialogsComponent } from './dashboard-dialogs/dashboard-dialogs
     ProjectDialogComponent,
     IssueDialogComponent,
     DashboardDialogsComponent,
+    TimeClockDialogsComponent,
   ],
   imports: [
     BrowserModule,

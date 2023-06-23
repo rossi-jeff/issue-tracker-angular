@@ -1,30 +1,37 @@
 <div class="card">
-  <div class="flex flex-wrap justify-between">
-    <div>
-      <strong>User</strong>
-      {{ user }}
+  <div class="flex flex-wrap">
+    <div *ngIf="session.data.signedIn" class="mr-4">
+      <button (click)="editTimeclockClicked()">Edit</button>
     </div>
-    <div>
-      <strong>Project</strong>
-      {{ project }}
-    </div>
-    <div>
-      <strong>Issue</strong>
-      {{ issue }}
-    </div>
-  </div>
-  <div class="flex flex-wrap justify-between">
-    <div>
-      <strong>From</strong>
-      {{ from }}
-    </div>
-    <div>
-      <strong>To</strong>
-      {{ to }}
-    </div>
-    <div>
-      <strong>Hours</strong>
-      {{ hours }}
+    <div class="flex-grow">
+      <div class="flex flex-wrap justify-between">
+        <div>
+          <strong>User</strong>
+          {{ user }}
+        </div>
+        <div>
+          <strong>Project</strong>
+          {{ project }}
+        </div>
+        <div>
+          <strong>Issue</strong>
+          {{ issue }}
+        </div>
+      </div>
+      <div class="flex flex-wrap justify-between">
+        <div>
+          <strong>From</strong>
+          {{ from }}
+        </div>
+        <div>
+          <strong>To</strong>
+          {{ to }}
+        </div>
+        <div>
+          <strong>Hours</strong>
+          {{ hours }}
+        </div>
+      </div>
     </div>
   </div>
 </div>

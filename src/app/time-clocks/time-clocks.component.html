@@ -1,4 +1,9 @@
-<h1>Time Clocks</h1>
+<div class="flex flex-wrap">
+  <h1>Time Clocks</h1>
+  <button class="ml-4" *ngIf="session.data.signedIn" (click)="newTimeClock()">
+    New Time Clock
+  </button>
+</div>
 
 <app-time-clock-filter
   [users]="users"
@@ -10,6 +15,7 @@
 <app-time-clock-card
   *ngFor="let timeClock of paginated"
   [timeClock]="timeClock"
+  (editTimeClock)="editTimeClock($event)"
 ></app-time-clock-card>
 
 <app-pagination-controls
@@ -19,3 +25,13 @@
   (pageChanged)="pageChanged($event)"
   (limitChanged)="limitChanged($event)"
 ></app-pagination-controls>
+
+<app-time-clock-dialogs
+  [issues]="issues"
+  [projects]="projects"
+  [users]="users"
+  [newTimeClock]="editor['new']"
+  [editTimeClock]="editor['edit']"
+  (createTimeClock)="createTimeClock($event)"
+  (updateTimeClock)="updateTimeClock($event)"
+></app-time-clock-dialogs>
