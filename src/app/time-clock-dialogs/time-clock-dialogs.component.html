@@ -70,7 +70,7 @@
     </form>
     <div class="flex flex-wrap justify-between">
       <button (click)="hideNew()">Cancel</button>
-      <button>Create Time Clock</button>
+      <button (click)="createTimeClockClicked()">Create Time Clock</button>
     </div>
   </div>
   <div class="modal-50p" id="edit-time-clock-dialog">
@@ -144,7 +144,7 @@
     </form>
     <div class="flex flex-wrap justify-between">
       <button (click)="hideEdit()">Cancel</button>
-      <button>Update Time Clock</button>
+      <button (click)="updateTimeClockClicked()">Update Time Clock</button>
     </div>
   </div>
 </div>

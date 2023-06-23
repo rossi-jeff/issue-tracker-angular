@@ -6,6 +6,7 @@ import { UserType } from '../../types/user.type';
 import { ProjectType } from '../../types/project.type';
 import {
   TimeClockDialogsComponent,
+  TimeClockFormType,
   blankTimeClockForm,
 } from '../time-clock-dialogs/time-clock-dialogs.component';
 import { UserSessionStorage } from '../../lib/user-session';
@@ -101,6 +102,41 @@ export class TimeClocksComponent implements OnInit {
       this.timeClocks.find((t) => t.UUID == uuid) || clone(blankTimeClockForm);
     this.editor['edit'] = clone(timeClock);
     this.dialog.showEdit();
+  };
+
+  createTimeClock = (ev: TimeClockFormType) => {
+    const { Start, End, ProjectId, UserId, IssueId } = ev;
+    this.api
+      .post({
+        path: 'timeclock',
+        body: { Start, End, ProjectId, UserId, IssueId },
+        token: this.session.data.Token ? this.session.data.Token : undefined,
+      })
+      .subscribe((result: any) => {
+        this.timeClocks.push(result);
+        this.count = this.timeClocks.length;
+        this.setPaginated();
+        this.dialog.hideNew();
+        console.log(result);
+      });
+  };
+
+  updateTimeClock = (ev: TimeClockFormType) => {
+    const { Start, End, ProjectId, UserId, IssueId, UUID } = ev;
+    this.api
+      .patch({
+        path: `timeclock/${UUID}`,
+        body: { Start, End, ProjectId, UserId, IssueId },
+        token: this.session.data.Token ? this.session.data.Token : undefined,
+      })
+      .subscribe((result: any) => {
+        const idx = this.timeClocks.findIndex((t) => t.UUID == UUID);
+        if (idx != -1) {
+          this.timeClocks[idx] = result;
+          this.setPaginated();
+          this.dialog.hideEdit();
+        }
+      });
   };
 
   ngOnInit(): void {

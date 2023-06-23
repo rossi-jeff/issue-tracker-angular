@@ -1,9 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { UserType } from '../../types/user.type';
 import { IssueType } from '../../types/issue.type';
 import { ProjectType } from '../../types/project.type';
 import { clone } from '../../lib/clone';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { getFullName } from '../../lib/get-full-name';
 import { TimeClockType } from '../../types/time-clock.type';
 
@@ -95,6 +95,9 @@ export class TimeClockDialogsComponent {
     return this._issues;
   }
 
+  @Output() createTimeClock = new EventEmitter<TimeClockFormType>();
+  @Output() updateTimeClock = new EventEmitter<TimeClockFormType>();
+
   newIssues: IssueType[] = [];
   editIssues: IssueType[] = [];
 
@@ -107,9 +110,9 @@ export class TimeClockDialogsComponent {
       Date: new FormControl(''),
       Time: new FormControl(''),
     }),
-    ProjectId: new FormControl(''),
-    IssueId: new FormControl(''),
-    UserId: new FormControl(''),
+    ProjectId: new FormControl('', Validators.required),
+    IssueId: new FormControl('', Validators.required),
+    UserId: new FormControl('', Validators.required),
     UUID: new FormControl(''),
   });
 
@@ -122,9 +125,9 @@ export class TimeClockDialogsComponent {
       Date: new FormControl(''),
       Time: new FormControl(''),
     }),
-    ProjectId: new FormControl(''),
-    IssueId: new FormControl(''),
-    UserId: new FormControl(''),
+    ProjectId: new FormControl('', Validators.required),
+    IssueId: new FormControl('', Validators.required),
+    UserId: new FormControl('', Validators.required),
     UUID: new FormControl(''),
   });
 
@@ -198,6 +201,16 @@ export class TimeClockDialogsComponent {
     const dialog = document.getElementById('edit-time-clock-dialog');
     if (dialog) dialog.classList.remove('open');
     this.hideOverlay();
+  };
+
+  createTimeClockClicked = () => {
+    if (this.newTimeClockForm.invalid) return;
+    this.createTimeClock.emit(this.newTimeClockForm.value);
+  };
+
+  updateTimeClockClicked = () => {
+    if (this.editTimeClockForm.invalid) return;
+    this.updateTimeClock.emit(this.editTimeClockForm.value);
   };
 
   fullName = (user: UserType) => getFullName(user);
