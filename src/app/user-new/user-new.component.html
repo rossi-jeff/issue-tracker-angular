@@ -1,0 +1,46 @@
+<div>
+  <h1>New User</h1>
+  <form class="my-2" [formGroup]="userForm">
+    <h3>Credentials</h3>
+    <div
+      class="flex flex-wrap justify-between mb-4"
+      formGroupName="Credentials"
+    >
+      <div>
+        <label for="Username" class="block">Username</label>
+        <input type="text" name="Username" formControlName="Username" />
+      </div>
+      <div>
+        <label for="Password" class="block">Password</label>
+        <input type="password" name="Password" formControlName="Password" />
+      </div>
+    </div>
+    <h3>Name</h3>
+    <div class="flex flex-wrap justify-between mb-4" formGroupName="Name">
+      <div>
+        <label for="First" class="block">First</label>
+        <input type="text" name="First" formControlName="First" />
+      </div>
+      <div>
+        <label for="Middle" class="block">Middle</label>
+        <input type="text" name="Middle" formControlName="Middle" />
+      </div>
+      <div>
+        <label for="Last" class="block">Last</label>
+        <input type="text" name="Last" formControlName="Last" />
+      </div>
+    </div>
+    <h3>Roles</h3>
+    <div class="flex flex-wrap justify-between mb-4">
+      <div *ngFor="let r of roles">
+        <input
+          type="checkbox"
+          name="Roles"
+          [value]="r"
+          (change)="roleChecked($event)"
+        />
+        <label for="" class="ml-2">{{ r }}</label>
+      </div>
+    </div>
+  </form>
+</div>

@@ -10,6 +10,10 @@ h2 {
   @apply text-xl font-bold;
 }
 
+h3 {
+  @apply text-lg font-bold;
+}
+
 .card {
   @apply border border-black rounded p-2 mb-2;
 }
