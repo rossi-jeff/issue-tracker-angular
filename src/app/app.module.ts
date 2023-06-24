@@ -27,6 +27,8 @@ import { TimeClockDialogsComponent } from './time-clock-dialogs/time-clock-dialo
 import { UserNewComponent } from './user-new/user-new.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserDialogsComponent } from './user-dialogs/user-dialogs.component';
+import { PhoneListComponent } from './phone-list/phone-list.component';
+import { EmailListComponent } from './email-list/email-list.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { UserDialogsComponent } from './user-dialogs/user-dialogs.component';
     UserNewComponent,
     UserEditComponent,
     UserDialogsComponent,
+    PhoneListComponent,
+    EmailListComponent,
   ],
   imports: [
     BrowserModule,

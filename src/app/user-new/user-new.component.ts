@@ -1,6 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { UserRoleArray } from '../../types/array.types';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
+import { UserType } from '../../types/user.type';
+import {
+  EmailFormType,
+  PhoneFormType,
+  UserDialogsComponent,
+  blankEmailForm,
+  blankPhoneForm,
+} from '../user-dialogs/user-dialogs.component';
+import { PhoneType } from '../../types/phone.type';
+import { EmailType } from '../../types/email.type';
+import { clone } from '../../lib/clone';
 
 @Component({
   selector: 'app-user-new',
@@ -21,6 +32,29 @@ export class UserNewComponent {
     }),
     Roles: new FormControl<string[]>([]),
   });
+  user: UserType = {
+    Credentials: {},
+    Name: {},
+    Roles: [],
+    Phones: [],
+    Emails: [],
+  };
+
+  editor: {
+    phone: { [key: string]: PhoneType };
+    email: { [key: string]: EmailType };
+  } = {
+    phone: {
+      new: clone(blankPhoneForm),
+      edit: clone(blankPhoneForm),
+    },
+    email: {
+      new: clone(blankEmailForm),
+      edit: clone(blankEmailForm),
+    },
+  };
+
+  @ViewChild(UserDialogsComponent) dialog!: UserDialogsComponent;
 
   roleChecked = (ev: any) => {
     const { checked, value } = ev.target;
@@ -33,5 +67,23 @@ export class UserNewComponent {
       if (idx != -1) Roles.splice(idx, 1);
     }
     this.userForm.patchValue({ Roles });
+  };
+
+  newPhone = () => {
+    this.dialog.showNewPhone();
+  };
+
+  newEmail = () => {
+    this.dialog.showNewEmail();
+  };
+
+  createPhone = (ev: PhoneFormType) => {
+    console.log(ev);
+    this.dialog.hideNewPhone();
+  };
+
+  createEmail = (ev: EmailFormType) => {
+    console.log(ev);
+    this.dialog.hideNewEmail();
   };
 }

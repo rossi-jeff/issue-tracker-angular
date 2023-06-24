@@ -43,4 +43,26 @@
       </div>
     </div>
   </form>
+  <div class="flex flex-wrap">
+    <h3>Phones</h3>
+    <button class="ml-4" (click)="newPhone()">New Phone</button>
+  </div>
+  <app-phone-list [phones]="user.Phones || []"></app-phone-list>
+  <div class="flex flex-wrap">
+    <h3>Emails</h3>
+    <button class="ml-4" (click)="newEmail()">New Email</button>
+  </div>
+  <app-email-list [emails]="user.Emails || []"></app-email-list>
+  <div class="text-right">
+    <button>Save User</button>
+  </div>
 </div>
+
+<app-user-dialogs
+  [newPhone]="editor.phone['new']"
+  [editPhone]="editor.phone['edit']"
+  [newEmail]="editor.email['new']"
+  [editEmail]="editor.email['edit']"
+  (createEmail)="createEmail($event)"
+  (createPhone)="createPhone($event)"
+></app-user-dialogs>
