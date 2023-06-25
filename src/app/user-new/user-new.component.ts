@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { UserRoleArray } from '../../types/array.types';
 import { FormControl, FormGroup } from '@angular/forms';
-import { UserType } from '../../types/user.type';
+import { RoleType, UserType } from '../../types/user.type';
 import {
   EmailFormType,
   PhoneFormType,
@@ -30,7 +30,7 @@ export class UserNewComponent {
       Middle: new FormControl(''),
       Last: new FormControl(''),
     }),
-    Roles: new FormControl<string[]>([]),
+    Roles: new FormControl<RoleType[]>([]),
   });
   user: UserType = {
     Credentials: {},
@@ -67,6 +67,23 @@ export class UserNewComponent {
       if (idx != -1) Roles.splice(idx, 1);
     }
     this.userForm.patchValue({ Roles });
+    this.updateUserAttributes();
+  };
+
+  updateUserAttributes = () => {
+    const { Credentials, Name, Roles } = this.userForm.value;
+    if (!Name || !Credentials || !Roles) return;
+    const { First, Middle, Last } = Name;
+    const { Username, Password } = Credentials;
+    this.user.Roles = Roles;
+    if (!this.user.Name) this.user.Name = { First: '', Middle: '', Last: '' };
+    this.user.Name.First = First || '';
+    this.user.Name.Middle = Middle || '';
+    this.user.Name.Last = Last || '';
+    if (!this.user.Credentials)
+      this.user.Credentials = { Username: '', Password: '' };
+    this.user.Credentials.Username = Username || '';
+    this.user.Credentials.Password = Password || '';
   };
 
   newPhone = () => {
@@ -78,12 +95,81 @@ export class UserNewComponent {
   };
 
   createPhone = (ev: PhoneFormType) => {
-    console.log(ev);
+    const { Number, Type, Usage, Public } = ev;
+    if (!Number || !Type || !Usage || Public == null) return;
+    if (!this.user.Phones) this.user.Phones = [];
+    const phone: PhoneType = {
+      Number,
+      Type,
+      Usage,
+      Public,
+      UUID: crypto.randomUUID(),
+    };
+    this.user.Phones.push(phone);
     this.dialog.hideNewPhone();
   };
 
   createEmail = (ev: EmailFormType) => {
-    console.log(ev);
+    const { Address, Usage, Public } = ev;
+    if (!Address || !Usage || Public == null) return;
+    if (!this.user.Emails) this.user.Emails = [];
+    const email: EmailType = {
+      Address,
+      Usage,
+      Public,
+      UUID: crypto.randomUUID(),
+    };
+    this.user.Emails.push(email);
     this.dialog.hideNewEmail();
+  };
+
+  editPhone = (uuid: string) => {
+    if (!this.user.Phones) this.user.Phones = [];
+    const phone = this.user.Phones.find((p) => p.UUID == uuid);
+    this.editor.phone['edit'] = phone ? clone(phone) : clone(blankPhoneForm);
+    this.dialog.showEditPhone();
+  };
+
+  editEmail = (uuid: string) => {
+    if (!this.user.Emails) this.user.Emails = [];
+    const email = this.user.Emails.find((e) => e.UUID == uuid);
+    this.editor.email['edit'] = email ? clone(email) : clone(blankEmailForm);
+    this.dialog.showEditEmail();
+  };
+
+  deletePhone = (uuid: string) => {
+    if (!this.user.Phones) this.user.Phones = [];
+    const idx = this.user.Phones.findIndex((p) => p.UUID == uuid);
+    if (idx != -1) this.user.Phones.splice(idx, 1);
+  };
+
+  deleteEmail = (uuid: string) => {
+    if (!this.user.Emails) this.user.Emails = [];
+    const idx = this.user.Emails.findIndex((e) => e.UUID == uuid);
+    if (idx != -1) this.user.Emails.splice(idx, 1);
+  };
+
+  updatePhone = (ev: PhoneFormType) => {
+    const { Number, Type, Usage, Public, UUID } = ev;
+    if (!Number || !Type || !Usage || !UUID || Public == null) return;
+    if (!this.user.Phones) this.user.Phones = [];
+    const idx = this.user.Phones.findIndex((p) => p.UUID == UUID);
+    if (idx != -1) {
+      const phone: PhoneType = { Number, Type, Usage, Public, UUID };
+      this.user.Phones[idx] = phone;
+      this.dialog.hideEditPhone();
+    }
+  };
+
+  updateEmail = (ev: EmailFormType) => {
+    const { Address, Usage, Public, UUID } = ev;
+    if (!Address || !Usage || !UUID || Public == null) return;
+    if (!this.user.Emails) this.user.Emails = [];
+    const idx = this.user.Emails.findIndex((e) => e.UUID == UUID);
+    if (idx != -1) {
+      const email: EmailType = { Address, Usage, Public, UUID };
+      this.user.Emails[idx] = email;
+      this.dialog.hideEditEmail();
+    }
   };
 }

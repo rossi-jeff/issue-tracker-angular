@@ -1,1 +1,30 @@
-<p>phone-list works!</p>
+<div id="phone-list">
+  <div *ngIf="phones.length > 0" class="flex flex-wrap justify-between">
+    <div>&nbsp;</div>
+    <div>Number</div>
+    <div>Type</div>
+    <div>Usage</div>
+    <div>Public</div>
+    <div>&nbsp;</div>
+  </div>
+  <div *ngFor="let phone of phones" class="flex flex-wrap justify-between">
+    <div>
+      <button (click)="editPhone.emit(phone.UUID)">Edit</button>
+    </div>
+    <div>
+      {{ phone.Number }}
+    </div>
+    <div>
+      {{ phone.Type }}
+    </div>
+    <div>
+      {{ phone.Usage }}
+    </div>
+    <div>
+      {{ phone.Public }}
+    </div>
+    <div>
+      <button (click)="deletePhone.emit(phone.UUID)">Delete</button>
+    </div>
+  </div>
+</div>

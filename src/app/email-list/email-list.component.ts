@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { EmailType } from '../../types/email.type';
 
 @Component({
@@ -8,4 +8,6 @@ import { EmailType } from '../../types/email.type';
 })
 export class EmailListComponent {
   @Input() emails!: EmailType[];
+  @Output() editEmail = new EventEmitter<string>();
+  @Output() deleteEmail = new EventEmitter<string>();
 }

@@ -1,1 +1,26 @@
-<p>email-list works!</p>
+<div id="email-list">
+  <div *ngIf="emails.length > 0" class="flex flex-wrap justify-between">
+    <div>&nbsp;</div>
+    <div>Address</div>
+    <div>Usage</div>
+    <div>Public</div>
+    <div>&nbsp;</div>
+  </div>
+  <div *ngFor="let email of emails" class="flex flex-wrap justify-between">
+    <div>
+      <button (click)="editEmail.emit(email.UUID)">Edit</button>
+    </div>
+    <div>
+      {{ email.Address }}
+    </div>
+    <div>
+      {{ email.Usage }}
+    </div>
+    <div>
+      {{ email.Public }}
+    </div>
+    <div>
+      <button (click)="deleteEmail.emit(email.UUID)">Delete</button>
+    </div>
+  </div>
+</div>

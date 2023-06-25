@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PhoneType } from '../../types/phone.type';
 
 @Component({
@@ -8,4 +8,6 @@ import { PhoneType } from '../../types/phone.type';
 })
 export class PhoneListComponent {
   @Input() phones!: PhoneType[];
+  @Output() editPhone = new EventEmitter<string>();
+  @Output() deletePhone = new EventEmitter<string>();
 }

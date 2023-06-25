@@ -8,26 +8,51 @@
     >
       <div>
         <label for="Username" class="block">Username</label>
-        <input type="text" name="Username" formControlName="Username" />
+        <input
+          type="text"
+          name="Username"
+          formControlName="Username"
+          (change)="updateUserAttributes()"
+        />
       </div>
       <div>
         <label for="Password" class="block">Password</label>
-        <input type="password" name="Password" formControlName="Password" />
+        <input
+          type="password"
+          name="Password"
+          formControlName="Password"
+          (change)="updateUserAttributes()"
+        />
       </div>
     </div>
     <h3>Name</h3>
     <div class="flex flex-wrap justify-between mb-4" formGroupName="Name">
       <div>
         <label for="First" class="block">First</label>
-        <input type="text" name="First" formControlName="First" />
+        <input
+          type="text"
+          name="First"
+          formControlName="First"
+          (change)="updateUserAttributes()"
+        />
       </div>
       <div>
         <label for="Middle" class="block">Middle</label>
-        <input type="text" name="Middle" formControlName="Middle" />
+        <input
+          type="text"
+          name="Middle"
+          formControlName="Middle"
+          (change)="updateUserAttributes()"
+        />
       </div>
       <div>
         <label for="Last" class="block">Last</label>
-        <input type="text" name="Last" formControlName="Last" />
+        <input
+          type="text"
+          name="Last"
+          formControlName="Last"
+          (change)="updateUserAttributes()"
+        />
       </div>
     </div>
     <h3>Roles</h3>
@@ -47,12 +72,20 @@
     <h3>Phones</h3>
     <button class="ml-4" (click)="newPhone()">New Phone</button>
   </div>
-  <app-phone-list [phones]="user.Phones || []"></app-phone-list>
+  <app-phone-list
+    [phones]="user.Phones || []"
+    (editPhone)="editPhone($event)"
+    (deletePhone)="deletePhone($event)"
+  ></app-phone-list>
   <div class="flex flex-wrap">
     <h3>Emails</h3>
     <button class="ml-4" (click)="newEmail()">New Email</button>
   </div>
-  <app-email-list [emails]="user.Emails || []"></app-email-list>
+  <app-email-list
+    [emails]="user.Emails || []"
+    (editEmail)="editEmail($event)"
+    (deleteEmail)="deleteEmail($event)"
+  ></app-email-list>
   <div class="text-right">
     <button>Save User</button>
   </div>
@@ -65,4 +98,6 @@
   [editEmail]="editor.email['edit']"
   (createEmail)="createEmail($event)"
   (createPhone)="createPhone($event)"
+  (updateEmail)="updateEmail($event)"
+  (updatePhone)="updatePhone($event)"
 ></app-user-dialogs>

@@ -95,6 +95,8 @@ export class UserDialogsComponent {
 
   @Output() createPhone = new EventEmitter<PhoneFormType>();
   @Output() createEmail = new EventEmitter<EmailFormType>();
+  @Output() updatePhone = new EventEmitter<PhoneFormType>();
+  @Output() updateEmail = new EventEmitter<EmailFormType>();
 
   newPhoneForm = new FormGroup({
     Number: new FormControl(''),
@@ -196,10 +198,18 @@ export class UserDialogsComponent {
   };
 
   createPhoneClicked = () => {
-    this.createPhone.emit(this.newPhoneForm.value)
-  }
+    this.createPhone.emit(this.newPhoneForm.value);
+  };
 
   createEmailClicked = () => {
-    this.createEmail.emit(this.newEmailForm.value)
-  }
+    this.createEmail.emit(this.newEmailForm.value);
+  };
+
+  updatePhoneClicked = () => {
+    this.updatePhone.emit(this.editPhoneForm.value);
+  };
+
+  updateEmailClicked = () => {
+    this.updateEmail.emit(this.editEmailForm.value);
+  };
 }
