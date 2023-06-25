@@ -62,9 +62,34 @@ export class UserEditComponent implements OnInit {
 
   @ViewChild(UserDialogsComponent) dialog!: UserDialogsComponent;
 
-  roleChecked = (ev: any) => {};
+  roleChecked = (ev: any) => {
+    const { checked, value } = ev.target;
+    const { Roles } = this.userForm.value;
+    if (!Roles) return;
+    if (checked) {
+      Roles.push(value);
+    } else {
+      const idx = Roles.indexOf(value);
+      if (idx != -1) Roles.splice(idx, 1);
+    }
+    this.userForm.patchValue({ Roles });
+    this.updateUserAttributes();
+  };
 
-  updateUserAttributes = () => {};
+  updateUserAttributes = () => {
+    const { Credentials, Name, Roles } = this.userForm.value;
+    if (!Name || !Credentials || !Roles) return;
+    const { First, Middle, Last } = Name;
+    const { Username } = Credentials;
+    this.user.Roles = Roles;
+    if (!this.user.Name) this.user.Name = { First: '', Middle: '', Last: '' };
+    this.user.Name.First = First || '';
+    this.user.Name.Middle = Middle || '';
+    this.user.Name.Last = Last || '';
+    if (!this.user.Credentials)
+      this.user.Credentials = { Username: '', Password: '' };
+    this.user.Credentials.Username = Username || '';
+  };
 
   newPhone = () => {
     this.dialog.showNewPhone();
@@ -74,9 +99,39 @@ export class UserEditComponent implements OnInit {
     this.dialog.showNewEmail();
   };
 
-  createPhone = (ev: PhoneFormType) => {};
+  createPhone = (ev: PhoneFormType) => {
+    const { Number, Type, Usage, Public } = ev;
+    if (!Number || !Type || !Usage || Public == null) return;
+    this.api
+      .post({
+        path: `user/${this.uuid}/phone`,
+        body: { Number, Type, Usage, Public },
+        token: this.session.data.Token ? this.session.data.Token : undefined,
+      })
+      .subscribe((phone) => {
+        if (!this.user.Phones) this.user.Phones = [];
+        this.user.Phones.push(phone);
+        this.editor.phone['new'] = clone(blankPhoneForm);
+        this.dialog.hideNewPhone();
+      });
+  };
 
-  createEmail = (ev: EmailFormType) => {};
+  createEmail = (ev: EmailFormType) => {
+    const { Address, Usage, Public } = ev;
+    if (!Address || !Usage || Public == null) return;
+    this.api
+      .post({
+        path: `user/${this.uuid}/email`,
+        body: { Address, Usage, Public },
+        token: this.session.data.Token ? this.session.data.Token : undefined,
+      })
+      .subscribe((email) => {
+        if (!this.user.Emails) this.user.Emails = [];
+        this.user.Emails.push(email);
+        this.editor.email['new'] = clone(blankEmailForm);
+        this.dialog.hideNewEmail();
+      });
+  };
 
   editPhone = (uuid: string) => {
     if (!this.user.Phones) this.user.Phones = [];
@@ -93,23 +148,93 @@ export class UserEditComponent implements OnInit {
   };
 
   deletePhone = (uuid: string) => {
-    if (!this.user.Phones) this.user.Phones = [];
+    this.api
+      .delete({
+        path: `phone/${uuid}`,
+        token: this.session.data.Token ? this.session.data.Token : undefined,
+      })
+      .subscribe(() => {
+        if (!this.user.Phones) this.user.Phones = [];
+        const idx = this.user.Phones.findIndex((p) => p.UUID == uuid);
+        if (idx != -1) {
+          this.user.Phones.slice(idx, 1);
+        }
+      });
   };
 
   deleteEmail = (uuid: string) => {
-    if (!this.user.Emails) this.user.Emails = [];
+    this.api
+      .delete({
+        path: `email/${uuid}`,
+        token: this.session.data.Token ? this.session.data.Token : undefined,
+      })
+      .subscribe(() => {
+        if (!this.user.Emails) this.user.Emails = [];
+        const idx = this.user.Emails.findIndex((e) => e.UUID == uuid);
+        if (idx != -1) {
+          this.user.Emails.splice(idx, 1);
+        }
+      });
   };
 
   updatePhone = (ev: PhoneFormType) => {
     const { Number, Type, Usage, Public, UUID } = ev;
     if (!Number || !Type || !Usage || !UUID || Public == null) return;
-    if (!this.user.Phones) this.user.Phones = [];
+    this.api
+      .patch({
+        path: `phone/${UUID}`,
+        body: { Number, Type, Usage, Public },
+        token: this.session.data.Token ? this.session.data.Token : undefined,
+      })
+      .subscribe((phone) => {
+        if (!this.user.Phones) this.user.Phones = [];
+        const idx = this.user.Phones.findIndex((p) => p.UUID == UUID);
+        if (idx != -1) {
+          this.user.Phones[idx] = phone;
+        }
+        this.dialog.hideEditPhone();
+      });
   };
 
   updateEmail = (ev: EmailFormType) => {
     const { Address, Usage, Public, UUID } = ev;
     if (!Address || !Usage || !UUID || Public == null) return;
-    if (!this.user.Emails) this.user.Emails = [];
+    this.api
+      .patch({
+        path: `email/${UUID}`,
+        body: { Address, Usage, Public },
+        token: this.session.data.Token ? this.session.data.Token : undefined,
+      })
+      .subscribe((email) => {
+        if (!this.user.Emails) this.user.Emails = [];
+        const idx = this.user.Emails.findIndex((e) => e.UUID == UUID);
+        if (idx != -1) {
+          this.user.Emails[idx] = email;
+        }
+        this.dialog.hideEditEmail();
+      });
+  };
+
+  updateUser = () => {
+    const { Credentials, Name, Roles, UUID } = this.user;
+    this.api
+      .patch({
+        path: `user/${UUID}`,
+        body: {},
+        token: this.session.data.Token ? this.session.data.Token : undefined,
+      })
+      .subscribe((user: any) => {
+        this.user = user;
+        this.userForm.patchValue({
+          Credentials: { Username: user.Credentials.Username },
+          Name: {
+            First: user.Name.First,
+            Middle: user.Name.Middle,
+            Last: user.Name.Last,
+          },
+          Roles: user.Roles,
+        });
+      });
   };
 
   ngOnInit(): void {
