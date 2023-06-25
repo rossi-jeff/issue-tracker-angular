@@ -12,6 +12,31 @@ import {
 import { PhoneType } from '../../types/phone.type';
 import { EmailType } from '../../types/email.type';
 import { clone } from '../../lib/clone';
+import { ApiService } from '../api.service';
+import { UserSessionStorage } from '../../lib/user-session';
+
+export type CredentialsFormType = {
+  Username?: string | null;
+  Password?: string | null;
+};
+
+export type NameFormType = {
+  First?: string | null;
+  Middle?: string | null;
+  Last?: string | null;
+};
+
+export type UserFormType = {
+  Credentials?: CredentialsFormType | null;
+  Name?: NameFormType | null;
+  Roles?: RoleType[] | null;
+};
+
+export const blankUserForm: UserFormType = {
+  Credentials: { Username: '', Password: '' },
+  Name: { First: '', Middle: '', Last: '' },
+  Roles: [],
+};
 
 @Component({
   selector: 'app-user-new',
@@ -19,6 +44,10 @@ import { clone } from '../../lib/clone';
   styleUrls: ['./user-new.component.css'],
 })
 export class UserNewComponent {
+  constructor(private api: ApiService) {}
+
+  session: UserSessionStorage = new UserSessionStorage();
+
   roles = UserRoleArray;
   userForm = new FormGroup({
     Credentials: new FormGroup({
@@ -171,5 +200,24 @@ export class UserNewComponent {
       this.user.Emails[idx] = email;
       this.dialog.hideEditEmail();
     }
+  };
+
+  createUser = () => {
+    const { user } = this;
+    this.api
+      .post({
+        path: 'register',
+        body: user,
+        token: this.session.data.Token ? this.session.data.Token : undefined,
+      })
+      .subscribe((result) => {
+        console.log(result);
+        this.userForm.patchValue(clone(blankUserForm));
+        this.user.Emails = [];
+        this.user.Phones = [];
+        this.user.UUID = undefined;
+        this.user.Id = undefined;
+        this.updateUserAttributes();
+      });
   };
 }

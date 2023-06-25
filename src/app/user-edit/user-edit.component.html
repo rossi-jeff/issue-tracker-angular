@@ -1,1 +1,92 @@
-<p>user-edit works!</p>
+<div>
+  <h1>Edit User</h1>
+  <form class="my-2" [formGroup]="userForm">
+    <h3>Credentials</h3>
+    <div
+      class="flex flex-wrap justify-between mb-4"
+      formGroupName="Credentials"
+    >
+      <div>
+        <label for="Username" class="block">Username</label>
+        <input
+          type="text"
+          name="Username"
+          formControlName="Username"
+          (change)="updateUserAttributes()"
+        />
+      </div>
+    </div>
+    <h3>Name</h3>
+    <div class="flex flex-wrap justify-between mb-4" formGroupName="Name">
+      <div>
+        <label for="First" class="block">First</label>
+        <input
+          type="text"
+          name="First"
+          formControlName="First"
+          (change)="updateUserAttributes()"
+        />
+      </div>
+      <div>
+        <label for="Middle" class="block">Middle</label>
+        <input
+          type="text"
+          name="Middle"
+          formControlName="Middle"
+          (change)="updateUserAttributes()"
+        />
+      </div>
+      <div>
+        <label for="Last" class="block">Last</label>
+        <input
+          type="text"
+          name="Last"
+          formControlName="Last"
+          (change)="updateUserAttributes()"
+        />
+      </div>
+    </div>
+    <h3>Roles</h3>
+    <div class="flex flex-wrap justify-between mb-4">
+      <div *ngFor="let r of roles">
+        <input
+          type="checkbox"
+          name="Roles"
+          [value]="r"
+          [checked]="user.Roles && user.Roles.indexOf(r) > -1"
+          (change)="roleChecked($event)"
+        />
+        <label for="" class="ml-2">{{ r }}</label>
+      </div>
+    </div>
+  </form>
+  <div class="flex flex-wrap">
+    <h3>Phones</h3>
+    <button class="ml-4" (click)="newPhone()">New Phone</button>
+  </div>
+  <app-phone-list
+    [phones]="user.Phones || []"
+    (editPhone)="editPhone($event)"
+    (deletePhone)="deletePhone($event)"
+  ></app-phone-list>
+  <div class="flex flex-wrap">
+    <h3>Emails</h3>
+    <button class="ml-4" (click)="newEmail()">New Email</button>
+  </div>
+  <app-email-list
+    [emails]="user.Emails || []"
+    (editEmail)="editEmail($event)"
+    (deleteEmail)="deleteEmail($event)"
+  ></app-email-list>
+</div>
+
+<app-user-dialogs
+  [newPhone]="editor.phone['new']"
+  [editPhone]="editor.phone['edit']"
+  [newEmail]="editor.email['new']"
+  [editEmail]="editor.email['edit']"
+  (createEmail)="createEmail($event)"
+  (createPhone)="createPhone($event)"
+  (updateEmail)="updateEmail($event)"
+  (updatePhone)="updatePhone($event)"
+></app-user-dialogs>
