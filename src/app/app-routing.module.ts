@@ -6,6 +6,8 @@ import { IssuesComponent } from './issues/issues.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { TimeClocksComponent } from './time-clocks/time-clocks.component';
 import { UsersComponent } from './users/users.component';
+import { UserNewComponent } from './user-new/user-new.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,6 +16,8 @@ const routes: Routes = [
   { path: 'projects', component: ProjectsComponent },
   { path: 'time_clocks', component: TimeClocksComponent },
   { path: 'users', component: UsersComponent },
+  { path: 'users/new', component: UserNewComponent },
+  { path: 'users/:uuid', component: UserEditComponent },
 ];
 
 @NgModule({

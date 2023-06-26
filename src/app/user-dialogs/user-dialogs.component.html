@@ -1,0 +1,112 @@
+<div class="modal-overlay" id="user-overlay">
+  <div class="modal-fit" id="new-phone-dialog">
+    <h2>New Phone</h2>
+    <form [formGroup]="newPhoneForm">
+      <div>
+        <label for="Number" class="block">Number</label>
+        <input type="tel" name="Number" formControlName="Number" />
+      </div>
+      <div>
+        <label for="Usage" class="block">Usage</label>
+        <select name="Usage" formControlName="Usage" class="w-full">
+          <option value="">- select -</option>
+          <option *ngFor="let u of usages" [value]="u">{{ u }}</option>
+        </select>
+      </div>
+      <div>
+        <label for="Type" class="block">Type</label>
+        <select name="Type" formControlName="Type" class="w-full">
+          <option value="">- select -</option>
+          <option *ngFor="let t of types" [value]="t">{{ t }}</option>
+        </select>
+      </div>
+      <div>
+        <input type="checkbox" name="Public" formControlName="Public" />
+        <label for="Public" class="inline-block ml-2">Public</label>
+      </div>
+    </form>
+    <div class="flex flex-wrap justify-between">
+      <button (click)="hideNewPhone()">Cancel</button>
+      <button (click)="createPhoneClicked()">Create Phone</button>
+    </div>
+  </div>
+  <div class="modal-fit" id="edit-phone-dialog">
+    <h2>Edit Phone</h2>
+    <form [formGroup]="editPhoneForm">
+      <div>
+        <label for="Number" class="block">Number</label>
+        <input type="tel" name="Number" formControlName="Number" />
+      </div>
+      <div>
+        <label for="Usage" class="block">Usage</label>
+        <select name="Usage" formControlName="Usage" class="w-full">
+          <option value="">- select -</option>
+          <option *ngFor="let u of usages" [value]="u">{{ u }}</option>
+        </select>
+      </div>
+      <div>
+        <label for="Type" class="block">Type</label>
+        <select name="Type" formControlName="Type" class="w-full">
+          <option value="">- select -</option>
+          <option *ngFor="let t of types" [value]="t">{{ t }}</option>
+        </select>
+      </div>
+      <div>
+        <input type="checkbox" name="Public" formControlName="Public" />
+        <label for="Public" class="inline-block ml-2">Public</label>
+      </div>
+    </form>
+    <div class="flex flex-wrap justify-between">
+      <button (click)="hideEditPhone()">Cancel</button>
+      <button (click)="updatePhoneClicked()">Update Phone</button>
+    </div>
+  </div>
+  <div class="modal-fit" id="new-email-dialog">
+    <h2>New Email</h2>
+    <form [formGroup]="newEmailForm">
+      <div>
+        <label for="Address" class="block">Address</label>
+        <input type="email" name="Address" formControlName="Address" />
+      </div>
+      <div>
+        <label for="Usage" class="block">Usage</label>
+        <select name="Usage" formControlName="Usage" class="w-full">
+          <option value="">- select -</option>
+          <option *ngFor="let u of usages" [value]="u">{{ u }}</option>
+        </select>
+      </div>
+      <div>
+        <input type="checkbox" name="Public" formControlName="Public" />
+        <label for="Public" class="inline-block ml-2">Public</label>
+      </div>
+    </form>
+    <div class="flex flex-wrap justify-between">
+      <button (click)="hideNewEmail()">Cancel</button>
+      <button (click)="createEmailClicked()">Create Email</button>
+    </div>
+  </div>
+  <div class="modal-fit" id="edit-email-dialog">
+    <h2>Edit Email</h2>
+    <form [formGroup]="editEmailForm">
+      <div>
+        <label for="Address" class="block">Address</label>
+        <input type="email" name="Address" formControlName="Address" />
+      </div>
+      <div>
+        <label for="Usage" class="block">Usage</label>
+        <select name="Usage" formControlName="Usage" class="w-full">
+          <option value="">- select -</option>
+          <option *ngFor="let u of usages" [value]="u">{{ u }}</option>
+        </select>
+      </div>
+      <div>
+        <input type="checkbox" name="Public" formControlName="Public" />
+        <label for="Public" class="inline-block ml-2">Public</label>
+      </div>
+    </form>
+    <div class="flex flex-wrap justify-between">
+      <button (click)="hideEditEmail()">Cancel</button>
+      <button (click)="updateEmailClicked()">Update Email</button>
+    </div>
+  </div>
+</div>

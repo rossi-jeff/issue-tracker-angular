@@ -1,4 +1,13 @@
 <div class="card">
-  <h2 *ngIf="user.Credentials">{{ user.Credentials.Username }}</h2>
+  <div class="flex flex-wrap">
+    <button
+      class="mr-4"
+      routerLink="/users/{{ user.UUID }}"
+      *ngIf="session.data.signedIn"
+    >
+      Edit
+    </button>
+    <h2 *ngIf="user.Credentials">{{ user.Credentials.Username }}</h2>
+  </div>
   <div>{{ name }}</div>
 </div>

@@ -1,4 +1,9 @@
-<h1>Users</h1>
+<div class="flex flex-wrap">
+  <h1>Users</h1>
+  <button class="ml-4" routerLink="/users/new" *ngIf="session.data.signedIn">
+    New User
+  </button>
+</div>
 
 <app-user-card *ngFor="let user of paginated" [user]="user"></app-user-card>
 

@@ -24,6 +24,11 @@ import { ProjectDialogComponent } from './project-dialog/project-dialog.componen
 import { IssueDialogComponent } from './issue-dialog/issue-dialog.component';
 import { DashboardDialogsComponent } from './dashboard-dialogs/dashboard-dialogs.component';
 import { TimeClockDialogsComponent } from './time-clock-dialogs/time-clock-dialogs.component';
+import { UserNewComponent } from './user-new/user-new.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
+import { UserDialogsComponent } from './user-dialogs/user-dialogs.component';
+import { PhoneListComponent } from './phone-list/phone-list.component';
+import { EmailListComponent } from './email-list/email-list.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +52,11 @@ import { TimeClockDialogsComponent } from './time-clock-dialogs/time-clock-dialo
     IssueDialogComponent,
     DashboardDialogsComponent,
     TimeClockDialogsComponent,
+    UserNewComponent,
+    UserEditComponent,
+    UserDialogsComponent,
+    PhoneListComponent,
+    EmailListComponent,
   ],
   imports: [
     BrowserModule,

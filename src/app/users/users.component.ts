@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { UserType } from '../../types/user.type';
+import { UserSessionStorage } from '../../lib/user-session';
 
 @Component({
   selector: 'app-users',
@@ -16,6 +17,8 @@ export class UsersComponent implements OnInit {
   limit: number = 10;
 
   constructor(private api: ApiService) {}
+
+  session: UserSessionStorage = new UserSessionStorage();
 
   loadUsers = () => {
     this.api.get({ path: 'user' }).subscribe((result: any) => {

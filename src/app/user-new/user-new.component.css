@@ -1,0 +1,7 @@
+label {
+  @apply font-bold;
+}
+
+input {
+  @apply border border-black rounded px-2 py-1;
+}
