@@ -1,30 +1,38 @@
 <div id="phone-list">
-  <div *ngIf="phones.length > 0" class="flex flex-wrap justify-between">
-    <div>&nbsp;</div>
-    <div>Number</div>
-    <div>Type</div>
-    <div>Usage</div>
-    <div>Public</div>
-    <div>&nbsp;</div>
+  <div *ngIf="phones.length > 0" class="phone-list-header">
+    <div class="w-8">&nbsp;</div>
+    <div class="w-48">Number</div>
+    <div class="w-16">Type</div>
+    <div class="w-16">Usage</div>
+    <div class="w-16">Public</div>
+    <div class="w-8">&nbsp;</div>
   </div>
-  <div *ngFor="let phone of phones" class="flex flex-wrap justify-between">
-    <div>
-      <button (click)="editPhone.emit(phone.UUID)">Edit</button>
+  <div *ngFor="let phone of phones" class="phone-list-row">
+    <div class="w-8">
+      <button (click)="editPhone.emit(phone.UUID)">
+        <ng-icon
+          name="bootstrap-pencil-square"
+          size="16"
+          strokeWidth="4"
+        ></ng-icon>
+      </button>
     </div>
-    <div>
+    <div class="w-48">
       {{ phone.Number }}
     </div>
-    <div>
+    <div class="w-16">
       {{ phone.Type }}
     </div>
-    <div>
+    <div class="w-16">
       {{ phone.Usage }}
     </div>
-    <div>
-      {{ phone.Public }}
+    <div class="w-16">
+      {{ phone.Public ? "Yes" : "No" }}
     </div>
-    <div>
-      <button (click)="deletePhone.emit(phone.UUID)">Delete</button>
+    <div class="w-8">
+      <button (click)="deletePhone.emit(phone.UUID)">
+        <ng-icon name="bootstrap-trash" size="16" strokeWidth="4"></ng-icon>
+      </button>
     </div>
   </div>
 </div>

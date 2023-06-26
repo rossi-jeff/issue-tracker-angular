@@ -1,6 +1,16 @@
 <div id="pagination-controls" class="flex flex-wrap justify-between">
-  <button (click)="firstPage()">First</button>
-  <button (click)="previousPage()">Previous</button>
+  <button (click)="firstPage()">
+    <ng-icon
+      name="bootstrap-chevron-bar-left"
+      size="16"
+      strokeWidth="4"
+    ></ng-icon>
+    First
+  </button>
+  <button (click)="previousPage()">
+    <ng-icon name="bootstrap-chevron-left" size="16" strokeWidth="4"></ng-icon>
+    Previous
+  </button>
   <div>
     <label for="per-pag">Per Page</label>
     <select name="per-page" (change)="limitSelectChanged($event)">
@@ -28,6 +38,16 @@
       </option>
     </select>
   </div>
-  <button (click)="nextPage()">Next</button>
-  <button (click)="lastPage()">Last</button>
+  <button (click)="nextPage()">
+    Next
+    <ng-icon name="bootstrap-chevron-right" size="16" strokeWidth="4"></ng-icon>
+  </button>
+  <button (click)="lastPage()">
+    Last
+    <ng-icon
+      name="bootstrap-chevron-bar-right"
+      size="16"
+      strokeWidth="4"
+    ></ng-icon>
+  </button>
 </div>

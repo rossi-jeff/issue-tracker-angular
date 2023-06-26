@@ -14,8 +14,18 @@
       </div>
     </form>
     <div class="flex flex-wrap justify-between">
-      <button (click)="hideNew()">Cancel</button>
-      <button (click)="createProjectClicked()">Create Project</button>
+      <button (click)="hideNew()">
+        <ng-icon
+          name="bootstrap-slash-circle"
+          size="16"
+          strokeWidth="4"
+        ></ng-icon>
+        Cancel
+      </button>
+      <button (click)="createProjectClicked()">
+        Create Project
+        <ng-icon name="bootstrap-save" size="16" strokeWidth="4"></ng-icon>
+      </button>
     </div>
   </div>
   <div class="modal-40p" id="edit-project-dialog">
@@ -33,8 +43,18 @@
       </div>
     </form>
     <div class="flex flex-wrap justify-between">
-      <button (click)="hideEdit()">Cancel</button>
-      <button (click)="updateProjectClicked()">Update Project</button>
+      <button (click)="hideEdit()">
+        <ng-icon
+          name="bootstrap-slash-circle"
+          size="16"
+          strokeWidth="4"
+        ></ng-icon>
+        Cancel
+      </button>
+      <button (click)="updateProjectClicked()">
+        Update Project
+        <ng-icon name="bootstrap-save" size="16" strokeWidth="4"></ng-icon>
+      </button>
     </div>
   </div>
 </div>

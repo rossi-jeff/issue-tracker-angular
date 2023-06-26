@@ -1,26 +1,34 @@
 <div id="email-list">
-  <div *ngIf="emails.length > 0" class="flex flex-wrap justify-between">
-    <div>&nbsp;</div>
-    <div>Address</div>
-    <div>Usage</div>
-    <div>Public</div>
-    <div>&nbsp;</div>
+  <div *ngIf="emails.length > 0" class="email-list-header">
+    <div class="w-8">&nbsp;</div>
+    <div class="w-48">Address</div>
+    <div class="w-16">Usage</div>
+    <div class="w-16">Public</div>
+    <div class="w-8">&nbsp;</div>
   </div>
-  <div *ngFor="let email of emails" class="flex flex-wrap justify-between">
-    <div>
-      <button (click)="editEmail.emit(email.UUID)">Edit</button>
+  <div *ngFor="let email of emails" class="email-list-row">
+    <div class="w-8">
+      <button (click)="editEmail.emit(email.UUID)">
+        <ng-icon
+          name="bootstrap-pencil-square"
+          size="16"
+          strokeWidth="4"
+        ></ng-icon>
+      </button>
     </div>
-    <div>
+    <div class="w-48">
       {{ email.Address }}
     </div>
-    <div>
+    <div class="w-16">
       {{ email.Usage }}
     </div>
-    <div>
-      {{ email.Public }}
+    <div class="w-16">
+      {{ email.Public ? "Yes" : "No" }}
     </div>
-    <div>
-      <button (click)="deleteEmail.emit(email.UUID)">Delete</button>
+    <div class="w-8">
+      <button (click)="deleteEmail.emit(email.UUID)">
+        <ng-icon name="bootstrap-trash" size="16" strokeWidth="4"></ng-icon>
+      </button>
     </div>
   </div>
 </div>

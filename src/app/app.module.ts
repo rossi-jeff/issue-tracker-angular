@@ -47,6 +47,11 @@ import {
   bootstrapSave,
   bootstrapCardChecklist,
   bootstrapPlusCircle,
+  bootstrapChevronBarLeft,
+  bootstrapChevronBarRight,
+  bootstrapChevronLeft,
+  bootstrapChevronRight,
+  bootstrapFunnel,
 } from '@ng-icons/bootstrap-icons';
 import { NgIconsModule } from '@ng-icons/core';
 
@@ -101,6 +106,11 @@ import { NgIconsModule } from '@ng-icons/core';
       bootstrapSave,
       bootstrapCardChecklist,
       bootstrapPlusCircle,
+      bootstrapChevronBarLeft,
+      bootstrapChevronBarRight,
+      bootstrapChevronLeft,
+      bootstrapChevronRight,
+      bootstrapFunnel,
     }),
   ],
   providers: [],

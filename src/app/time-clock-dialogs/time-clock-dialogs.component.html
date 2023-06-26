@@ -69,8 +69,18 @@
       </div>
     </form>
     <div class="flex flex-wrap justify-between">
-      <button (click)="hideNew()">Cancel</button>
-      <button (click)="createTimeClockClicked()">Create Time Clock</button>
+      <button (click)="hideNew()">
+        <ng-icon
+          name="bootstrap-slash-circle"
+          size="16"
+          strokeWidth="4"
+        ></ng-icon>
+        Cancel
+      </button>
+      <button (click)="createTimeClockClicked()">
+        Create Time Clock
+        <ng-icon name="bootstrap-save" size="16" strokeWidth="4"></ng-icon>
+      </button>
     </div>
   </div>
   <div class="modal-50p" id="edit-time-clock-dialog">
@@ -143,8 +153,18 @@
       </div>
     </form>
     <div class="flex flex-wrap justify-between">
-      <button (click)="hideEdit()">Cancel</button>
-      <button (click)="updateTimeClockClicked()">Update Time Clock</button>
+      <button (click)="hideEdit()">
+        <ng-icon
+          name="bootstrap-slash-circle"
+          size="16"
+          strokeWidth="4"
+        ></ng-icon>
+        Cancel
+      </button>
+      <button (click)="updateTimeClockClicked()">
+        Update Time Clock
+        <ng-icon name="bootstrap-save" size="16" strokeWidth="4"></ng-icon>
+      </button>
     </div>
   </div>
 </div>

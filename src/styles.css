@@ -112,6 +112,18 @@ textarea {
   @apply h-24;
 }
 
+input,
+select,
+textarea {
+  @apply bg-dark text-light border-altDark px-2 py-1 border rounded text-sm;
+}
+
+.dark input,
+.dark select,
+.dark textarea {
+  @apply bg-light text-dark border-altDark;
+}
+
 .modal-fit select,
 .modal-fit input,
 .modal-fit textarea,
@@ -155,4 +167,24 @@ textarea {
 .modal-40p.open,
 .modal-50p.open {
   @apply block;
+}
+
+.phone-list-row,
+.email-list-row {
+  @apply flex flex-wrap justify-between border-b border-dashed border-dark py-1;
+}
+
+.phone-list-header,
+.email-list-header {
+  @apply flex flex-wrap justify-between bg-altDark text-light font-bold py-1 rounded;
+}
+
+.dark .phone-list-row,
+.dark .email-list-row {
+  @apply border-light;
+}
+
+.dark .phone-list-header,
+.dark .email-list-header {
+  @apply bg-altLight text-dark;
 }
