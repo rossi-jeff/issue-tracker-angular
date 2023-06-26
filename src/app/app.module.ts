@@ -29,6 +29,8 @@ import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserDialogsComponent } from './user-dialogs/user-dialogs.component';
 import { PhoneListComponent } from './phone-list/phone-list.component';
 import { EmailListComponent } from './email-list/email-list.component';
+import { FooterBarComponent } from './footer-bar/footer-bar.component';
+import { HeaderBarComponent } from './header-bar/header-bar.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,8 @@ import { EmailListComponent } from './email-list/email-list.component';
     UserDialogsComponent,
     PhoneListComponent,
     EmailListComponent,
+    FooterBarComponent,
+    HeaderBarComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  @apply m-0 p-0;
+}
+
+#main {
+  @apply bg-light text-dark m-0 p-0 absolute top-0 h-screen w-screen overflow-y-auto;
+}
+
+#main.dark {
+  @apply bg-dark text-light;
+}
+
 h1 {
   @apply text-2xl font-extrabold;
 }
@@ -14,12 +27,32 @@ h3 {
   @apply text-lg font-bold;
 }
 
+a,
+strong,
+label {
+  @apply text-altDark;
+}
+
+.dark a,
+.dark strong,
+.dark label {
+  @apply text-altLight;
+}
+
 .card {
-  @apply border border-black rounded p-2 mb-2;
+  @apply border rounded p-2 mb-2 bg-altLight border-altDark;
+}
+
+.dark .card {
+  @apply bg-altDark border-altLight;
 }
 
 .filter-content {
-  @apply border border-dashed rounded border-black p-2 mt-2 hidden transition-all;
+  @apply border border-dashed rounded p-2 mt-2 hidden transition-all bg-light border-dark;
+}
+
+.dark .filter-content {
+  @apply bg-dark border-light;
 }
 
 .filter-content.open {
@@ -31,15 +64,21 @@ h3 {
 }
 
 .modal-fit {
-  @apply max-w-fit border border-black bg-white p-2 mx-auto hidden relative top-24;
+  @apply max-w-fit border bg-altLight border-altDark p-2 mx-auto hidden relative top-24;
 }
 
 .modal-40p {
-  @apply w-[40%] border border-black bg-white p-2 mx-auto hidden relative top-24;
+  @apply w-[40%] border bg-altLight border-altDark p-2 mx-auto hidden relative top-24;
 }
 
 .modal-50p {
-  @apply w-[50%] border border-black bg-white p-2 mx-auto hidden relative top-24;
+  @apply w-[50%] border bg-altLight border-altDark  p-2 mx-auto hidden relative top-24;
+}
+
+.dark .modal-fit,
+.dark .modal-40p,
+.dark .modal-50p {
+  @apply bg-altDark border-altLight;
 }
 
 .modal-overlay.open,

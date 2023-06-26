@@ -1,10 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
-import {
-  CredentialsType,
-  SignInDialogComponent,
-} from './sign-in-dialog/sign-in-dialog.component';
-import { ApiService } from './api.service';
-import { UserSessionStorage, blankUserSession } from '../lib/user-session';
+import { Component } from '@angular/core';
+import { PaletteNames } from '../lib/palettes';
+import { ThemeFormType } from './footer-bar/footer-bar.component';
 
 @Component({
   selector: 'app-root',
@@ -12,34 +8,15 @@ import { UserSessionStorage, blankUserSession } from '../lib/user-session';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  constructor(private api: ApiService) {}
+  paletteName = PaletteNames;
+  palette = this.paletteName[0];
 
-  @ViewChild(SignInDialogComponent) dialog!: SignInDialogComponent;
-
-  session: UserSessionStorage = new UserSessionStorage();
-
-  signInClicked = () => {
-    this.dialog.showSignIn();
-  };
-
-  signIn = (credentials: CredentialsType) => {
-    this.api
-      .post({ path: 'auth/login', body: credentials })
-      .subscribe((result: any) => {
-        const { Name, SessionId, Token, UUID, UserName } = result;
-        this.session.data = {
-          Name,
-          SessionId,
-          Token,
-          UUID,
-          UserName,
-          signedIn: true,
-        };
-      });
-    this.dialog.hideSignIn();
-  };
-
-  signOut = () => {
-    this.session.data = blankUserSession;
+  changeTheme = (ev: ThemeFormType) => {
+    const { Palette, Dark } = ev;
+    this.palette = Palette ? Palette : this.paletteName[0];
+    const main = document.getElementById('main');
+    if (main) {
+      Dark ? main.classList.add('dark') : main.classList.remove('dark');
+    }
   };
 }
