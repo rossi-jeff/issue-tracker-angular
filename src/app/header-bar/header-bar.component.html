@@ -1,21 +1,69 @@
 <div id="header-bar">
-  <div class="ml-4 mt-2">
-    <button (click)="signInClicked()" *ngIf="!session.data.signedIn">
-      Sign In
-    </button>
-    <span *ngIf="session.data.signedIn" class="font-bold mr-4">{{
-      session.data.UserName
-    }}</span>
-    <button (click)="signOut()" *ngIf="session.data.signedIn">Sign Out</button>
+  <div class="flex flex-wrap justify-between">
+    <div class="flex flex-wrap">
+      <h1>Issue</h1>
+      <span class="mx-2 mt-1">
+        <ng-icon
+          name="bootstrap-card-checklist"
+          size="24"
+          strokeWidth="4"
+        ></ng-icon>
+      </span>
+      <h1>Tracker</h1>
+    </div>
+    <div>
+      <button (click)="signInClicked()" *ngIf="!session.data.signedIn">
+        <ng-icon
+          name="bootstrap-box-arrow-in-right"
+          size="16"
+          strokeWidth="4"
+        ></ng-icon>
+        Sign In
+      </button>
+      <button
+        *ngIf="session.data.signedIn"
+        routerLink="/users/{{ session.data.UUID }}"
+        class="mr-4"
+      >
+        <ng-icon name="bootstrap-person" size="16" strokeWidth="4"></ng-icon>
+        {{ session.data.UserName }}
+      </button>
+      <button (click)="signOut()" *ngIf="session.data.signedIn">
+        Sign Out
+        <ng-icon
+          name="bootstrap-box-arrow-right"
+          size="16"
+          strokeWidth="4"
+        ></ng-icon>
+      </button>
+    </div>
   </div>
 
-  <div class="flex flex-wrap justify-between mx-4 mt-2">
-    <button routerLink="/">Home</button>
-    <button routerLink="/dashboard">Dashboard</button>
-    <button routerLink="/projects">Projects</button>
-    <button routerLink="/issues">Issues</button>
-    <button routerLink="/users">Users</button>
-    <button routerLink="/time_clocks">Time Clocks</button>
+  <div class="flex flex-wrap justify-between mt-2">
+    <button routerLink="/">
+      <ng-icon name="bootstrap-house" size="16" strokeWidth="4"></ng-icon>
+      Home
+    </button>
+    <button routerLink="/dashboard">
+      <ng-icon name="bootstrap-grid" size="16" strokeWidth="4"></ng-icon>
+      Dashboard
+    </button>
+    <button routerLink="/projects">
+      <ng-icon name="bootstrap-tools" size="16" strokeWidth="4"></ng-icon>
+      Projects
+    </button>
+    <button routerLink="/issues">
+      <ng-icon name="bootstrap-list-check" size="16" strokeWidth="4"></ng-icon>
+      Issues
+    </button>
+    <button routerLink="/users">
+      <ng-icon name="bootstrap-people" size="16" strokeWidth="4"></ng-icon>
+      Users
+    </button>
+    <button routerLink="/time_clocks">
+      <ng-icon name="bootstrap-clock" size="16" strokeWidth="4"></ng-icon>
+      Time Clocks
+    </button>
   </div>
 </div>
 

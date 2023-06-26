@@ -8,11 +8,29 @@ body {
 }
 
 #main {
-  @apply bg-light text-dark m-0 p-0 absolute top-0 h-screen w-screen overflow-y-auto;
+  @apply bg-light text-dark m-0 p-0 absolute top-0 h-screen w-screen overflow-y-auto flex flex-col;
 }
 
 #main.dark {
   @apply bg-dark text-light;
+}
+
+#header-bar,
+#footer-bar {
+  @apply bg-dark text-light mx-4 my-2 p-2 border border-altDark rounded;
+}
+
+.dark #header-bar,
+.dark #footer-bar {
+  @apply bg-light text-dark border-altLight;
+}
+
+#footer-bar select {
+  @apply bg-light text-dark px-2 py-1 border border-altLight rounded text-sm;
+}
+
+.dark #footer-bar select {
+  @apply bg-dark text-light border-altDark;
 }
 
 h1 {
@@ -30,13 +48,18 @@ h3 {
 a,
 strong,
 label {
-  @apply text-altDark;
+  @apply text-altDark font-bold;
 }
 
 .dark a,
 .dark strong,
 .dark label {
   @apply text-altLight;
+}
+
+a:hover,
+button:hover {
+  @apply underline;
 }
 
 .card {
@@ -53,6 +76,16 @@ label {
 
 .dark .filter-content {
   @apply bg-dark border-light;
+}
+
+.filter-content select,
+.filter-content input {
+  @apply px-2 py-1 border rounded text-sm bg-dark text-light border-altDark;
+}
+
+.dark .filter-content select,
+.dark .filter-content input {
+  @apply bg-light text-dark border-altLight;
 }
 
 .filter-content.open {
@@ -73,6 +106,42 @@ label {
 
 .modal-50p {
   @apply w-[50%] border bg-altLight border-altDark  p-2 mx-auto hidden relative top-24;
+}
+
+textarea {
+  @apply h-24;
+}
+
+.modal-fit select,
+.modal-fit input,
+.modal-fit textarea,
+.modal-40pselect,
+.modal-40p input,
+.modal-40p textarea,
+.modal-50p select,
+.modal-50p input,
+.modal-50p textarea {
+  @apply px-2 py-1 border rounded text-sm bg-light text-dark border-altDark w-full;
+}
+
+#pagination-controls select {
+  @apply px-2 py-1 border rounded text-sm bg-dark text-light border-altLight ml-2;
+}
+
+.dark #pagination-controls select {
+  @apply bg-light text-dark border-altDark;
+}
+
+.dark .modal-fit select,
+.dark .modal-fit input,
+.dark .modal-fit textarea,
+.dark .modal-40pselect,
+.dark .modal-40p input,
+.dark .modal-40p textarea,
+.dark .modal-50p select,
+.dark .modal-50p input,
+.dark .modal-50p textarea {
+  @apply bg-dark text-light border-altLight;
 }
 
 .dark .modal-fit,

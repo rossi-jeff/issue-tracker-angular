@@ -13,7 +13,13 @@
       </option>
     </select>
   </div>
-  <div>{{ first }} to {{ last }} of {{ count }}</div>
+  <div>
+    <strong>{{ first }}</strong>
+    to
+    <strong>{{ last }}</strong>
+    of
+    <strong>{{ count }}</strong>
+  </div>
   <div>
     <label for="page">Page</label>
     <select name="page" (change)="pageSelectChanged($event)">
