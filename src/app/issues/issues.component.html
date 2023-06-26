@@ -1,7 +1,11 @@
 <div class="flex flex-wrap">
+  <span class="mr-2 mt-1">
+    <ng-icon name="bootstrap-list-check" size="24" strokeWidth="4"></ng-icon>
+  </span>
   <h1>Issues</h1>
   <button class="ml-4" *ngIf="session.data.signedIn" (click)="newIssue()">
     New Issue
+    <ng-icon name="bootstrap-plus-circle" size="16" strokeWidth="4"></ng-icon>
   </button>
 </div>
 

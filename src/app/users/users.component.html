@@ -1,7 +1,11 @@
 <div class="flex flex-wrap">
+  <span class="mr-2 mt-1">
+    <ng-icon name="bootstrap-people" size="24" strokeWidth="4"></ng-icon>
+  </span>
   <h1>Users</h1>
   <button class="ml-4" routerLink="/users/new" *ngIf="session.data.signedIn">
     New User
+    <ng-icon name="bootstrap-plus-circle" size="16" strokeWidth="4"></ng-icon>
   </button>
 </div>
 

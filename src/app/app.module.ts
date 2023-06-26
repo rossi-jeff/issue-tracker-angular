@@ -46,6 +46,7 @@ import {
   bootstrapSlashCircle,
   bootstrapSave,
   bootstrapCardChecklist,
+  bootstrapPlusCircle,
 } from '@ng-icons/bootstrap-icons';
 import { NgIconsModule } from '@ng-icons/core';
 
@@ -99,6 +100,7 @@ import { NgIconsModule } from '@ng-icons/core';
       bootstrapSlashCircle,
       bootstrapSave,
       bootstrapCardChecklist,
+      bootstrapPlusCircle,
     }),
   ],
   providers: [],
