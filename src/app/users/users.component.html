@@ -5,7 +5,12 @@
   <h1>Users</h1>
   <button class="ml-4" routerLink="/users/new" *ngIf="session.data.signedIn">
     New User
-    <ng-icon name="bootstrap-plus-circle" size="16" strokeWidth="4"></ng-icon>
+    <ng-icon
+      name="bootstrap-plus-circle"
+      size="16"
+      strokeWidth="4"
+      class="relative top-0.5"
+    ></ng-icon>
   </button>
 </div>
 

@@ -14,6 +14,7 @@ import { EmailType } from '../../types/email.type';
 import { clone } from '../../lib/clone';
 import { ApiService } from '../api.service';
 import { UserSessionStorage } from '../../lib/user-session';
+import { Title } from '@angular/platform-browser';
 
 export type CredentialsFormType = {
   Username?: string | null;
@@ -44,7 +45,9 @@ export const blankUserForm: UserFormType = {
   styleUrls: ['./user-new.component.css'],
 })
 export class UserNewComponent {
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private titleService: Title) {
+    this.titleService.setTitle('Issue Tracker | New User');
+  }
 
   session: UserSessionStorage = new UserSessionStorage();
 

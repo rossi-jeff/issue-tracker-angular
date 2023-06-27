@@ -5,7 +5,12 @@
   <h1>Time Clocks</h1>
   <button class="ml-4" *ngIf="session.data.signedIn" (click)="newTimeClock()">
     New Time Clock
-    <ng-icon name="bootstrap-plus-circle" size="16" strokeWidth="4"></ng-icon>
+    <ng-icon
+      name="bootstrap-plus-circle"
+      size="16"
+      strokeWidth="4"
+      class="relative top-0.5"
+    ></ng-icon>
   </button>
 </div>
 

@@ -15,6 +15,8 @@ import {
 import { PhoneType } from '../../types/phone.type';
 import { EmailType } from '../../types/email.type';
 import { clone } from '../../lib/clone';
+import { Title } from '@angular/platform-browser';
+import { getFullName } from '../../lib/get-full-name';
 
 @Component({
   selector: 'app-user-edit',
@@ -22,7 +24,13 @@ import { clone } from '../../lib/clone';
   styleUrls: ['./user-edit.component.css'],
 })
 export class UserEditComponent implements OnInit {
-  constructor(private api: ApiService, private route: ActivatedRoute) {}
+  constructor(
+    private api: ApiService,
+    private route: ActivatedRoute,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle('Issue Tracker | Edit User');
+  }
 
   session: UserSessionStorage = new UserSessionStorage();
   uuid!: string;
@@ -252,6 +260,7 @@ export class UserEditComponent implements OnInit {
           },
           Roles: result.Roles,
         });
+        this.titleService.setTitle(`Issue Tracker | ${getFullName(this.user)}`);
       });
     }
   }

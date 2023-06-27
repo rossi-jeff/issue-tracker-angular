@@ -11,6 +11,7 @@ import {
 } from '../time-clock-dialogs/time-clock-dialogs.component';
 import { UserSessionStorage } from '../../lib/user-session';
 import { clone } from '../../lib/clone';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-time-clocks',
@@ -33,7 +34,9 @@ export class TimeClocksComponent implements OnInit {
     edit: clone(blankTimeClockForm),
   };
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private titleService: Title) {
+    this.titleService.setTitle('Issue Tracker | Time Clocks');
+  }
 
   session: UserSessionStorage = new UserSessionStorage();
 
