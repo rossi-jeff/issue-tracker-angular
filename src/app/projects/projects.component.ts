@@ -7,6 +7,7 @@ import {
   ProjectFormType,
 } from '../project-dialog/project-dialog.component';
 import { clone } from '../../lib/clone';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-projects',
@@ -21,7 +22,9 @@ export class ProjectsComponent implements OnInit {
   offset: number = 0;
   limit: number = 10;
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private titleService: Title) {
+    this.titleService.setTitle('Issue Tracker | Projects');
+  }
 
   session: UserSessionStorage = new UserSessionStorage();
 

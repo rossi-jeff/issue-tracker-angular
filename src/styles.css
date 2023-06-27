@@ -20,6 +20,22 @@ body {
   @apply bg-dark text-light mx-4 my-2 p-2 border border-altDark rounded;
 }
 
+#header-bar button {
+  @apply bg-altLight text-dark border-light border rounded px-2 py-1 font-bold;
+}
+
+#header-bar button:hover {
+  @apply bg-light;
+}
+
+.dark #header-bar button {
+  @apply bg-altDark text-light border-dark;
+}
+
+.dark #header-bar button:hover {
+  @apply bg-dark;
+}
+
 .dark #header-bar,
 .dark #footer-bar {
   @apply bg-light text-dark border-altLight;
@@ -49,6 +65,10 @@ a,
 strong,
 label {
   @apply text-altDark font-bold;
+}
+
+ul {
+  @apply list-disc list-inside ml-2 mb-4;
 }
 
 .dark a,
@@ -144,6 +164,10 @@ textarea {
   @apply bg-light text-dark border-altDark;
 }
 
+#pagination-controls button {
+  @apply font-bold;
+}
+
 .dark .modal-fit select,
 .dark .modal-fit input,
 .dark .modal-fit textarea,
@@ -176,7 +200,7 @@ textarea {
 
 .phone-list-header,
 .email-list-header {
-  @apply flex flex-wrap justify-between bg-altDark text-light font-bold py-1 rounded;
+  @apply flex flex-wrap justify-between bg-dark text-light font-bold py-1 rounded;
 }
 
 .dark .phone-list-row,
@@ -186,5 +210,29 @@ textarea {
 
 .dark .phone-list-header,
 .dark .email-list-header {
-  @apply bg-altLight text-dark;
+  @apply bg-light text-dark;
+}
+
+.dashboard-card-content,
+.dashboard-card-description,
+.dashboard-card-details {
+  @apply m-2 transition hidden;
+}
+
+.dashboard-card-content.open,
+.dashboard-card-description.open,
+.dashboard-card-details.open {
+  @apply block;
+}
+
+.dashboard-column .card button {
+  @apply bg-dark text-light px-2 py-1 w-full text-left font-bold rounded;
+}
+
+.dashboard-card-content button {
+  @apply mb-2;
+}
+
+.dark .dashboard-column .card button {
+  @apply bg-light text-dark;
 }

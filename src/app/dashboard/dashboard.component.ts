@@ -4,6 +4,7 @@ import { IssueType } from '../../types/issue.type';
 import { UserSessionStorage } from '../../lib/user-session';
 import { clone } from '../../lib/clone';
 import { DashboardDialogsComponent } from '../dashboard-dialogs/dashboard-dialogs.component';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,7 +21,9 @@ export class DashboardComponent implements OnInit {
     to: '',
   };
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private titleService: Title) {
+    this.titleService.setTitle('Issue Tracker | Dashboard');
+  }
 
   session: UserSessionStorage = new UserSessionStorage();
 

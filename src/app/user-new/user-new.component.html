@@ -1,97 +1,116 @@
 <div>
   <h1>New User</h1>
   <form class="my-2" [formGroup]="userForm">
-    <h3>Credentials</h3>
-    <div
-      class="flex flex-wrap justify-between mb-4"
-      formGroupName="Credentials"
-    >
-      <div>
-        <label for="Username" class="block">Username</label>
-        <input
-          type="text"
-          name="Username"
-          formControlName="Username"
-          (change)="updateUserAttributes()"
-        />
-      </div>
-      <div>
-        <label for="Password" class="block">Password</label>
-        <input
-          type="password"
-          name="Password"
-          formControlName="Password"
-          (change)="updateUserAttributes()"
-        />
-      </div>
-    </div>
-    <h3>Name</h3>
-    <div class="flex flex-wrap justify-between mb-4" formGroupName="Name">
-      <div>
-        <label for="First" class="block">First</label>
-        <input
-          type="text"
-          name="First"
-          formControlName="First"
-          (change)="updateUserAttributes()"
-        />
-      </div>
-      <div>
-        <label for="Middle" class="block">Middle</label>
-        <input
-          type="text"
-          name="Middle"
-          formControlName="Middle"
-          (change)="updateUserAttributes()"
-        />
-      </div>
-      <div>
-        <label for="Last" class="block">Last</label>
-        <input
-          type="text"
-          name="Last"
-          formControlName="Last"
-          (change)="updateUserAttributes()"
-        />
+    <div class="card">
+      <h3>Credentials</h3>
+      <div
+        class="flex flex-wrap justify-between mb-4"
+        formGroupName="Credentials"
+      >
+        <div>
+          <label for="Username" class="block">Username</label>
+          <input
+            type="text"
+            name="Username"
+            formControlName="Username"
+            (change)="updateUserAttributes()"
+          />
+        </div>
+        <div>
+          <label for="Password" class="block">Password</label>
+          <input
+            type="password"
+            name="Password"
+            formControlName="Password"
+            (change)="updateUserAttributes()"
+          />
+        </div>
       </div>
     </div>
-    <h3>Roles</h3>
-    <div class="flex flex-wrap justify-between mb-4">
-      <div *ngFor="let r of roles">
-        <input
-          type="checkbox"
-          name="Roles"
-          [value]="r"
-          (change)="roleChecked($event)"
-        />
-        <label for="" class="ml-2">{{ r }}</label>
+    <div class="card">
+      <h3>Name</h3>
+      <div class="flex flex-wrap justify-between mb-4" formGroupName="Name">
+        <div>
+          <label for="First" class="block">First</label>
+          <input
+            type="text"
+            name="First"
+            formControlName="First"
+            (change)="updateUserAttributes()"
+          />
+        </div>
+        <div>
+          <label for="Middle" class="block">Middle</label>
+          <input
+            type="text"
+            name="Middle"
+            formControlName="Middle"
+            (change)="updateUserAttributes()"
+          />
+        </div>
+        <div>
+          <label for="Last" class="block">Last</label>
+          <input
+            type="text"
+            name="Last"
+            formControlName="Last"
+            (change)="updateUserAttributes()"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Roles</h3>
+      <div class="flex flex-wrap justify-between mb-4">
+        <div *ngFor="let r of roles">
+          <input
+            type="checkbox"
+            name="Roles"
+            [value]="r"
+            (change)="roleChecked($event)"
+          />
+          <label for="" class="ml-2">{{ r }}</label>
+        </div>
       </div>
     </div>
   </form>
-  <div class="flex flex-wrap">
-    <h3>Phones</h3>
-    <button class="ml-4" (click)="newPhone()">
-      New Phone
-      <ng-icon name="bootstrap-plus-circle" size="16" strokeWidth="4"></ng-icon>
-    </button>
+  <div class="card">
+    <div class="flex flex-wrap">
+      <h3>Phones</h3>
+      <button class="ml-4" (click)="newPhone()">
+        New Phone
+        <ng-icon
+          name="bootstrap-plus-circle"
+          size="16"
+          strokeWidth="4"
+        ></ng-icon>
+      </button>
+    </div>
+    <app-phone-list
+      [phones]="user.Phones || []"
+      (editPhone)="editPhone($event)"
+      (deletePhone)="deletePhone($event)"
+    ></app-phone-list>
   </div>
-  <app-phone-list
-    [phones]="user.Phones || []"
-    (editPhone)="editPhone($event)"
-    (deletePhone)="deletePhone($event)"
-  ></app-phone-list>
-  <div class="flex flex-wrap">
-    <h3>Emails</h3>
-    <button class="ml-4" (click)="newEmail()">
-      New Email
-      <ng-icon name="bootstrap-plus-circle" size="16" strokeWidth="4"></ng-icon>
-    </button>
+  <div class="card">
+    <div class="flex flex-wrap">
+      <h3>Emails</h3>
+      <button class="ml-4" (click)="newEmail()">
+        New Email
+        <ng-icon
+          name="bootstrap-plus-circle"
+          size="16"
+          strokeWidth="4"
+        ></ng-icon>
+      </button>
+    </div>
+    <app-email-list
+      [emails]="user.Emails || []"
+      (editEmail)="editEmail($event)"
+      (deleteEmail)="deleteEmail($event)"
+    ></app-email-list>
   </div>
-  <app-email-list
-    [emails]="user.Emails || []"
-    (editEmail)="editEmail($event)"
-    (deleteEmail)="deleteEmail($event)"
-  ></app-email-list>
+
   <div class="text-right">
     <button (click)="createUser()">
       Save User

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { UserType } from '../../types/user.type';
 import { UserSessionStorage } from '../../lib/user-session';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-users',
@@ -16,7 +17,9 @@ export class UsersComponent implements OnInit {
   offset: number = 0;
   limit: number = 10;
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private titleService: Title) {
+    this.titleService.setTitle('Issue Tracker | Users');
+  }
 
   session: UserSessionStorage = new UserSessionStorage();
 

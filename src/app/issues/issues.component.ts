@@ -11,6 +11,7 @@ import {
 import { clone } from '../../lib/clone';
 import { UserSessionStorage } from '../../lib/user-session';
 import { RemoveBlanks } from '../../lib/remove-blanks';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-issues',
@@ -32,7 +33,9 @@ export class IssuesComponent implements OnInit {
     edit: clone(blankIssueForm),
   };
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private titleService: Title) {
+    this.titleService.setTitle('Issue Tracker | Issues');
+  }
 
   session: UserSessionStorage = new UserSessionStorage();
 
