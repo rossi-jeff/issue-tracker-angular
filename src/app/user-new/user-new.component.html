@@ -70,7 +70,10 @@
   </form>
   <div class="flex flex-wrap">
     <h3>Phones</h3>
-    <button class="ml-4" (click)="newPhone()">New Phone</button>
+    <button class="ml-4" (click)="newPhone()">
+      New Phone
+      <ng-icon name="bootstrap-plus-circle" size="16" strokeWidth="4"></ng-icon>
+    </button>
   </div>
   <app-phone-list
     [phones]="user.Phones || []"
@@ -79,7 +82,10 @@
   ></app-phone-list>
   <div class="flex flex-wrap">
     <h3>Emails</h3>
-    <button class="ml-4" (click)="newEmail()">New Email</button>
+    <button class="ml-4" (click)="newEmail()">
+      New Email
+      <ng-icon name="bootstrap-plus-circle" size="16" strokeWidth="4"></ng-icon>
+    </button>
   </div>
   <app-email-list
     [emails]="user.Emails || []"
@@ -87,7 +93,10 @@
     (deleteEmail)="deleteEmail($event)"
   ></app-email-list>
   <div class="text-right">
-    <button (click)="createUser()">Save User</button>
+    <button (click)="createUser()">
+      Save User
+      <ng-icon name="bootstrap-save" size="16" strokeWidth="4"></ng-icon>
+    </button>
   </div>
 </div>
 

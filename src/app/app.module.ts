@@ -29,6 +29,31 @@ import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserDialogsComponent } from './user-dialogs/user-dialogs.component';
 import { PhoneListComponent } from './phone-list/phone-list.component';
 import { EmailListComponent } from './email-list/email-list.component';
+import { FooterBarComponent } from './footer-bar/footer-bar.component';
+import { HeaderBarComponent } from './header-bar/header-bar.component';
+import {
+  bootstrapHouse,
+  bootstrapTools,
+  bootstrapListCheck,
+  bootstrapPeople,
+  bootstrapPerson,
+  bootstrapClock,
+  bootstrapPencilSquare,
+  bootstrapTrash,
+  bootstrapGrid,
+  bootstrapBoxArrowRight,
+  bootstrapBoxArrowInRight,
+  bootstrapSlashCircle,
+  bootstrapSave,
+  bootstrapCardChecklist,
+  bootstrapPlusCircle,
+  bootstrapChevronBarLeft,
+  bootstrapChevronBarRight,
+  bootstrapChevronLeft,
+  bootstrapChevronRight,
+  bootstrapFunnel,
+} from '@ng-icons/bootstrap-icons';
+import { NgIconsModule } from '@ng-icons/core';
 
 @NgModule({
   declarations: [
@@ -57,12 +82,36 @@ import { EmailListComponent } from './email-list/email-list.component';
     UserDialogsComponent,
     PhoneListComponent,
     EmailListComponent,
+    FooterBarComponent,
+    HeaderBarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgIconsModule.withIcons({
+      bootstrapHouse,
+      bootstrapTools,
+      bootstrapListCheck,
+      bootstrapPeople,
+      bootstrapPerson,
+      bootstrapClock,
+      bootstrapPencilSquare,
+      bootstrapTrash,
+      bootstrapGrid,
+      bootstrapBoxArrowRight,
+      bootstrapBoxArrowInRight,
+      bootstrapSlashCircle,
+      bootstrapSave,
+      bootstrapCardChecklist,
+      bootstrapPlusCircle,
+      bootstrapChevronBarLeft,
+      bootstrapChevronBarRight,
+      bootstrapChevronLeft,
+      bootstrapChevronRight,
+      bootstrapFunnel,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

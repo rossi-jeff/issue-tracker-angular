@@ -20,14 +20,26 @@
           <option *ngFor="let t of types" [value]="t">{{ t }}</option>
         </select>
       </div>
-      <div>
-        <input type="checkbox" name="Public" formControlName="Public" />
+      <div class="flex">
+        <div>
+          <input type="checkbox" name="Public" formControlName="Public" />
+        </div>
         <label for="Public" class="inline-block ml-2">Public</label>
       </div>
     </form>
     <div class="flex flex-wrap justify-between">
-      <button (click)="hideNewPhone()">Cancel</button>
-      <button (click)="createPhoneClicked()">Create Phone</button>
+      <button (click)="hideNewPhone()" class="mr-8">
+        <ng-icon
+          name="bootstrap-slash-circle"
+          size="16"
+          strokeWidth="4"
+        ></ng-icon>
+        Cancel
+      </button>
+      <button (click)="createPhoneClicked()">
+        Create Phone
+        <ng-icon name="bootstrap-save" size="16" strokeWidth="4"></ng-icon>
+      </button>
     </div>
   </div>
   <div class="modal-fit" id="edit-phone-dialog">
@@ -51,14 +63,26 @@
           <option *ngFor="let t of types" [value]="t">{{ t }}</option>
         </select>
       </div>
-      <div>
-        <input type="checkbox" name="Public" formControlName="Public" />
+      <div class="flex">
+        <div>
+          <input type="checkbox" name="Public" formControlName="Public" />
+        </div>
         <label for="Public" class="inline-block ml-2">Public</label>
       </div>
     </form>
     <div class="flex flex-wrap justify-between">
-      <button (click)="hideEditPhone()">Cancel</button>
-      <button (click)="updatePhoneClicked()">Update Phone</button>
+      <button (click)="hideEditPhone()" class="mr-8">
+        <ng-icon
+          name="bootstrap-slash-circle"
+          size="16"
+          strokeWidth="4"
+        ></ng-icon>
+        Cancel
+      </button>
+      <button (click)="updatePhoneClicked()">
+        Update Phone
+        <ng-icon name="bootstrap-save" size="16" strokeWidth="4"></ng-icon>
+      </button>
     </div>
   </div>
   <div class="modal-fit" id="new-email-dialog">
@@ -75,14 +99,26 @@
           <option *ngFor="let u of usages" [value]="u">{{ u }}</option>
         </select>
       </div>
-      <div>
-        <input type="checkbox" name="Public" formControlName="Public" />
+      <div class="flex">
+        <div>
+          <input type="checkbox" name="Public" formControlName="Public" />
+        </div>
         <label for="Public" class="inline-block ml-2">Public</label>
       </div>
     </form>
     <div class="flex flex-wrap justify-between">
-      <button (click)="hideNewEmail()">Cancel</button>
-      <button (click)="createEmailClicked()">Create Email</button>
+      <button (click)="hideNewEmail()" class="mr-8">
+        <ng-icon
+          name="bootstrap-slash-circle"
+          size="16"
+          strokeWidth="4"
+        ></ng-icon>
+        Cancel
+      </button>
+      <button (click)="createEmailClicked()">
+        Create Email
+        <ng-icon name="bootstrap-save" size="16" strokeWidth="4"></ng-icon>
+      </button>
     </div>
   </div>
   <div class="modal-fit" id="edit-email-dialog">
@@ -99,14 +135,26 @@
           <option *ngFor="let u of usages" [value]="u">{{ u }}</option>
         </select>
       </div>
-      <div>
-        <input type="checkbox" name="Public" formControlName="Public" />
+      <div class="flex">
+        <div>
+          <input type="checkbox" name="Public" formControlName="Public" />
+        </div>
         <label for="Public" class="inline-block ml-2">Public</label>
       </div>
     </form>
     <div class="flex flex-wrap justify-between">
-      <button (click)="hideEditEmail()">Cancel</button>
-      <button (click)="updateEmailClicked()">Update Email</button>
+      <button (click)="hideEditEmail()" class="mr-8">
+        <ng-icon
+          name="bootstrap-slash-circle"
+          size="16"
+          strokeWidth="4"
+        ></ng-icon>
+        Cancel
+      </button>
+      <button (click)="updateEmailClicked()">
+        Update Email
+        <ng-icon name="bootstrap-save" size="16" strokeWidth="4"></ng-icon>
+      </button>
     </div>
   </div>
 </div>

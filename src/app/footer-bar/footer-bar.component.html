@@ -1,0 +1,48 @@
+<div id="footer-bar">
+  <div class="flex flex-wrap justify-between">
+    <div class="flex flex-wrap">
+      <h2>Issue</h2>
+      <span class="mx-2 mt-1">
+        <ng-icon
+          name="bootstrap-card-checklist"
+          size="24"
+          strokeWidth="4"
+        ></ng-icon>
+      </span>
+      <h2>Tracker</h2>
+    </div>
+    <div>
+      Constructed by <strong>Jeff Rossi</strong> &lt;<a
+        href="mailto:inquiries@jeff-rossi.com"
+        >inquiries@jeff-rossi.com</a
+      >&gt;
+    </div>
+    <div>
+      <form [formGroup]="themeForm">
+        <div class="flex flex-wrap">
+          <div class="mr-4">
+            <label for="Palette" class="mr-2">Palette</label>
+            <select
+              name="Palette"
+              formControlName="Palette"
+              (change)="sendThemeChange()"
+            >
+              <option *ngFor="let name of paletteNames" [value]="name">
+                {{ name }}
+              </option>
+            </select>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              name="Dark"
+              formControlName="Dark"
+              (change)="sendThemeChange()"
+            />
+            <label for="Dark" class="ml-2">Dark</label>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

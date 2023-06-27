@@ -70,8 +70,18 @@
       </div>
     </form>
     <div class="flex flex-wrap justify-between">
-      <button (click)="hideNew()">Cancel</button>
-      <button (click)="createIssueClicked()">Create Issue</button>
+      <button (click)="hideNew()">
+        <ng-icon
+          name="bootstrap-slash-circle"
+          size="16"
+          strokeWidth="4"
+        ></ng-icon>
+        Cancel
+      </button>
+      <button (click)="createIssueClicked()">
+        Create Issue
+        <ng-icon name="bootstrap-save" size="16" strokeWidth="4"></ng-icon>
+      </button>
     </div>
   </div>
   <div class="modal-50p" id="edit-issue-dialog">
@@ -145,8 +155,18 @@
       </div>
     </form>
     <div class="flex flex-wrap justify-between">
-      <button (click)="hideEdit()">Cancel</button>
-      <button (click)="updateIssueClicked()">Update Issue</button>
+      <button (click)="hideEdit()">
+        <ng-icon
+          name="bootstrap-slash-circle"
+          size="16"
+          strokeWidth="4"
+        ></ng-icon>
+        Cancel
+      </button>
+      <button (click)="updateIssueClicked()">
+        Update Issue
+        <ng-icon name="bootstrap-save" size="16" strokeWidth="4"></ng-icon>
+      </button>
     </div>
   </div>
 </div>

@@ -1,11 +1,15 @@
 <div class="card">
   <div class="flex flex-wrap">
     <button
-      class="mr-4"
+      class="mr-2 mt-1"
       *ngIf="session.data.signedIn"
       (click)="editProjectClicked()"
     >
-      Edit
+      <ng-icon
+        name="bootstrap-pencil-square"
+        size="16"
+        strokeWidth="4"
+      ></ng-icon>
     </button>
     <h2>{{ project.Name }}</h2>
   </div>
